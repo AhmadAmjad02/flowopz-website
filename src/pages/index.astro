@@ -1,0 +1,132 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import BookButton from "../components/BookButton.astro";
+import { hero, services, stats, steps, skills, testimonials, faqs } from "../data/site";
+---
+
+<Layout>
+  <Header />
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">{hero.eyebrow}</p>
+          <h1>{hero.titleStart} <span class="grad">{hero.titleHighlight}</span> {hero.titleEnd}</h1>
+          <p class="lead">{hero.lead}</p>
+          <div class="cta-row">
+            <BookButton>Book Discovery Call</BookButton>
+            <a class="btn btn-ghost" href="#how">See how it works</a>
+          </div>
+          <p class="trust">{hero.trust}</p>
+        </div>
+        <div class="hero-card">
+          <div class="card-top">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="mono">{hero.card.label}</span>
+          </div>
+          <div class="status">READY</div>
+          <h3>{hero.card.title}</h3>
+          <ul class="checks">
+            {hero.card.checks.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <h2 class="section-title">Three ways to work together</h2>
+        <div class="cards">
+          {
+            services.map((s) => (
+              <article class:list={["card", { featured: s.featured }]}>
+                <p class="tag">{s.tag}</p>
+                <h3>{s.title}</h3>
+                <p class="price">
+                  {s.price}
+                  {s.period && <span>{s.period}</span>}
+                </p>
+                <p>{s.text}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="container stats-grid">
+        {
+          stats.map((s) => (
+            <div>
+              <strong>{s.value}</strong>
+              <span>{s.label}</span>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section id="how" class="section">
+      <div class="container">
+        <h2 class="section-title">How it works in three steps</h2>
+        <div class="steps">
+          {
+            steps.map((s, i) => (
+              <div class="step">
+                <span class="num">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </div>
+            ))
+          }
+        </div>
+        <div class="center"><BookButton>Start with a clean CRM</BookButton></div>
+      </div>
+    </section>
+
+    <section id="proof" class="section alt">
+      <div class="container">
+        <h2 class="section-title">Proof, not promises</h2>
+        <div class="pills">
+          {skills.map((s) => <span>{s}</span>)}
+        </div>
+        <div class="testimonials">
+          {
+            testimonials.map((t) => (
+              <blockquote>
+                "{t.quote}"<cite>{t.author}</cite>
+              </blockquote>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="container narrow">
+        <h2 class="section-title">Straight answers</h2>
+        {
+          faqs.map((f) => (
+            <details>
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container center">
+        <h2>Ready for a CRM that actually works?</h2>
+        <BookButton>Book Discovery Call</BookButton>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

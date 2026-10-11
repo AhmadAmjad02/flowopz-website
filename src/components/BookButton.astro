@@ -1,0 +1,19 @@
+---
+import { site } from "../data/site";
+
+interface Props {
+  size?: "sm";
+}
+
+const { size } = Astro.props;
+const external = site.bookingUrl.startsWith("http");
+---
+
+<a
+  class:list={["btn", { "btn-sm": size === "sm" }]}
+  href={site.bookingUrl}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener" : undefined}
+>
+  <slot />
+</a>

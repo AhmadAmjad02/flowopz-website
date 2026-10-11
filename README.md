@@ -1,16 +1,27 @@
 # Flowopz Website
 
-Static landing page for Flowopz (HTML/CSS/JS, no build step).
+Company website built with [Astro](https://astro.build) (static output).
+
+## Editing content
+All text, prices, FAQs and the booking link live in `src/data/site.ts`.
 
 ## Structure
-- `index.html` – page content
-- `assets/css/styles.css` – styles
-- `assets/js/main.js` – booking link (`BOOKING_URL`) and small scripts
+- `src/pages/index.astro` – home page
+- `src/layouts/Layout.astro` – HTML head and shell
+- `src/components/` – header, footer, booking button
+- `src/styles/global.css` – styles
+- `public/` – static files (favicon, images)
+
+## Commands
+- `npm install` – install dependencies
+- `npm run dev` – local dev server at http://localhost:4321
+- `npm run build` – production build to `dist/`
 
 ## Deploy (Hostinger)
-hPanel → Websites → Manage → Advanced → **GIT**:
-- Repository: `https://github.com/<owner>/flowopz-website.git`
-- Branch: `main`
-- Directory: leave empty (deploys to `public_html`)
+Import the GitHub repo in hPanel. Settings:
+- Framework: Astro
+- Build command: `npm run build`
+- Output directory: `dist`
+- Node version: 20+
 
-Enable **Auto Deployment** and add the webhook URL to GitHub (repo → Settings → Webhooks) so every push goes live.
+Every push to `main` redeploys the site.
