@@ -118,7 +118,7 @@ function initScenes() {
   // Hero: shrinks and fades as the offer sheet slides over it
   const hero = $(".hero.stick");
   if (hero) {
-    const inner = $(".hero-in", hero), low = $(".hero-low", hero), h1 = $("h1", hero), card = $(".hcard-o", hero);
+    const inner = $(".hero-in", hero), low = $(".hero-low", hero), h1 = $(".hero-head", hero) || $("h1", hero), card = $(".hcard-o", hero);
     scene(hero, (p) => {
       const k = clamp(p, 0, 1);
       if (hero.parentNode.classList.contains("free")) {

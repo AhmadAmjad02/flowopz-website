@@ -89,13 +89,28 @@ export const home = {
     dim: "Includes X hours of support.",
     text: "Flowopz builds clean CRM systems and automations for growing businesses. Start with a working setup, add monthly support when you're stuck, or get a custom build after a proper audit.",
     secondary: { label: "See how support works", href: "/services#support" },
+    eyebrow: "GoHighLevel · n8n · AI Automation",
     pill: `${upwork.badge} on Upwork · ${upwork.jobSuccess} Job Success`,
+    // Demo CRM dashboard shown in the hero card (illustrative numbers)
     card: {
-      chip: "Flowopz",
-      status: "READY",
+      chip: "Flowopz CRM",
+      status: "LIVE",
+      kpiLabel: "New leads this week",
+      kpi: "128",
+      kpiDelta: "+38%",
+      pipeline: [
+        { stage: "New", count: 42, pct: 100 },
+        { stage: "Contacted", count: 31, pct: 74 },
+        { stage: "Booked", count: 18, pct: 43 },
+        { stage: "Won", count: 9, pct: 22 },
+      ],
+      flow: ["Form submitted", "SMS sent in 2s", "Appointment booked"],
       field: "Claim your CRM setup",
-      title: "Access granted",
-      sub: "X hours of support included",
+    },
+    // Small notification chips floating around the card
+    floats: {
+      lead: { title: "New lead captured", sub: "Assigned to pipeline · 2s ago" },
+      saved: { value: "20+ hrs", label: "saved per week" },
     },
     caption: "Book a discovery call, get your setup, and use your included support hours.",
   },
