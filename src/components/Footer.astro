@@ -1,12 +1,46 @@
 ---
-import { site } from "../data/site";
+import Star from "./Star.astro";
+import { site, nav, proofLinks } from "../data/site";
 
 const year = new Date().getFullYear();
+const contactLinks = [
+  site.whatsapp && { label: site.whatsappLabel, href: `https://wa.me/${site.whatsapp}` },
+  { label: "Email", href: `mailto:${site.email}` },
+  site.calendlyUrl && { label: "Calendly", href: site.calendlyUrl },
+].filter(Boolean) as { label: string; href: string }[];
+
+const ext = (href: string) => (/^https?:/.test(href) ? { target: "_blank", rel: "noopener" } : {});
 ---
 
-<footer class="footer">
-  <div class="container footer-inner">
-    <span>© {year} {site.name}. All rights reserved.</span>
-    <a href={`mailto:${site.email}`}>{site.email}</a>
+<footer class="foot" data-nav="light">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <Star class="mark" />
+        <div class="big">{site.name}</div>
+        <p class="tag">{site.tagline}</p>
+      </div>
+      <div class="cols">
+        <div>
+          <p class="fh">Pages</p>
+          <ul>
+            <li><a href="/">Home</a></li>
+            {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+          </ul>
+        </div>
+        <div>
+          <p class="fh">Proof</p>
+          <ul>{proofLinks.map((l) => <li><a href={l.href} {...ext(l.href)}>{l.label}</a></li>)}</ul>
+        </div>
+        <div>
+          <p class="fh">Contact</p>
+          <ul>{contactLinks.map((l) => <li><a href={l.href} {...ext(l.href)}>{l.label}</a></li>)}</ul>
+        </div>
+      </div>
+    </div>
+    <div class="fine">
+      <span>&copy; {year} {site.name}</span>
+      <span>{site.location}</span>
+    </div>
   </div>
 </footer>

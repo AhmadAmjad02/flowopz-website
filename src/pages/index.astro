@@ -1,132 +1,176 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import BookButton from "../components/BookButton.astro";
-import { hero, services, stats, steps, skills, testimonials, faqs } from "../data/site";
+import Words from "../components/Words.astro";
+import Btn from "../components/Btn.astro";
+import Star from "../components/Star.astro";
+import Arrow from "../components/Arrow.astro";
+import Faq from "../components/Faq.astro";
+import { site, home } from "../data/site";
+
+const { hero, carousel, beyond, work, float, proof } = home;
+
+// Floating proof tiles: position, size, depth (blur level) and parallax speed.
+// Labels come from home.float.tiles; the three small blurred orbs have no label.
+const t = float.tiles;
+const tiles = [
+  { label: t[0], blur: "b1", s: 1.7, style: "left:8%;top:24%;width:clamp(120px,22vw,320px);aspect-ratio:1.6;background:linear-gradient(135deg,#cfd9f6,#7f98e6)" },
+  { label: t[1], blur: "b1", s: 1.9, style: "left:62%;top:14%;width:clamp(120px,20vw,300px);aspect-ratio:1.5;background:radial-gradient(60% 60% at 50% 40%,rgba(255,255,255,.55),transparent 70%),linear-gradient(160deg,#7d30e4,#240868)" },
+  { label: t[2], blur: "b2", s: 2.3, style: "left:70%;top:56%;width:clamp(90px,15vw,220px);aspect-ratio:1.3;background:conic-gradient(from 30deg,#f6f6f8,#8a8a96,#efeff2,#6c6c79,#f6f6f8)" },
+  { label: t[3], blur: "b2", s: 1.5, style: "left:16%;top:62%;width:clamp(90px,16vw,230px);aspect-ratio:1.4;background:radial-gradient(60% 60% at 50% 45%,#27c3b1,#06302e)" },
+  { label: t[4], blur: "b3", s: 2.7, style: "left:44%;top:72%;width:clamp(70px,11vw,160px);aspect-ratio:1.2;background:radial-gradient(50% 50% at 40% 60%,#c9ff3d,#0b0f0d 75%)" },
+  { label: "", blur: "b3", s: 2.2, style: "left:3%;top:6%;width:clamp(60px,9vw,130px);aspect-ratio:1.2;background:radial-gradient(50% 50% at 50% 50%,#ffa046,#2a0f02 75%)" },
+  { label: "", blur: "b3", s: 1.3, style: "left:46%;top:3%;width:clamp(60px,9vw,130px);aspect-ratio:1.2;background:radial-gradient(50% 50% at 50% 50%,#b36cff,#16062f 75%)" },
+  { label: "", blur: "b3", s: 1.9, style: "left:86%;top:22%;width:clamp(60px,9vw,130px);aspect-ratio:1.2;background:radial-gradient(50% 50% at 50% 50%,#2fd1bf,#03201e 75%)" },
+  { label: t[5], blur: "b2", s: 2.9, style: "left:30%;top:40%;width:clamp(80px,12vw,180px);aspect-ratio:1.5;background:linear-gradient(150deg,#e8e0fb,#9a82e8)" },
+];
+
+const ext = (href: string) => (/^https?:/.test(href) ? { target: "_blank", rel: "noopener" } : {});
 ---
 
 <Layout>
-  <Header />
-
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">{hero.eyebrow}</p>
-          <h1>{hero.titleStart} <span class="grad">{hero.titleHighlight}</span> {hero.titleEnd}</h1>
-          <p class="lead">{hero.lead}</p>
-          <div class="cta-row">
-            <BookButton>Book Discovery Call</BookButton>
-            <a class="btn btn-ghost" href="#how">See how it works</a>
+  <!-- Hero (sticky, shrinks as the offers sheet slides over) -->
+  <div class="hero-wrap">
+    <section class="hero stick" data-nav="dark">
+      <div class="hero-in">
+        <Words as="h1" mode="hh" text={hero.title} dim={hero.dim} />
+        <div class="hero-low">
+          <p>{hero.text}</p>
+          <div class="row">
+            <Btn href={hero.secondary.href} variant="g">{hero.secondary.label}</Btn>
+            <Btn href={site.cta.href} variant="w">{site.cta.label}</Btn>
           </div>
-          <p class="trust">{hero.trust}</p>
-        </div>
-        <div class="hero-card">
-          <div class="card-top">
-            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-            <span class="mono">{hero.card.label}</span>
+          <div class="pill">
+            <span class="bd">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#4a14b8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </span>
+            {hero.pill}
           </div>
-          <div class="status">READY</div>
-          <h3>{hero.card.title}</h3>
-          <ul class="checks">
-            {hero.card.checks.map((item) => <li>{item}</li>)}
-          </ul>
         </div>
-      </div>
-    </section>
-
-    <section id="services" class="section">
-      <div class="container">
-        <h2 class="section-title">Three ways to work together</h2>
-        <div class="cards">
-          {
-            services.map((s) => (
-              <article class:list={["card", { featured: s.featured }]}>
-                <p class="tag">{s.tag}</p>
-                <h3>{s.title}</h3>
-                <p class="price">
-                  {s.price}
-                  {s.period && <span>{s.period}</span>}
-                </p>
-                <p>{s.text}</p>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="stats">
-      <div class="container stats-grid">
-        {
-          stats.map((s) => (
-            <div>
-              <strong>{s.value}</strong>
-              <span>{s.label}</span>
+        <div class="hero-r">
+          <div class="hcard-o">
+            <div class="hcard-m">
+              <div class="hcard" aria-hidden="true">
+                <div class="tp">
+                  <span class="chip"><Star />{hero.card.chip}</span>
+                  <span class="chip live">{hero.card.status}</span>
+                </div>
+                <div class="hc-in">
+                  <div class="field">{hero.card.field}<i><Arrow /></i></div>
+                  <div class="segs"><i></i><i></i><i></i><i></i><i></i></div>
+                </div>
+                <div class="out"><b>{hero.card.title}</b><small>{hero.card.sub}</small></div>
+              </div>
             </div>
+          </div>
+          <p class="hero-cap">{hero.caption}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Offers carousel (pinned, horizontal 3D cards) -->
+  <section class="carousel pin" data-pin="carousel" data-nav="light" aria-labelledby="offers-h">
+    <div class="pin-in">
+      <h2 class="sr" id="offers-h">{carousel.heading}</h2>
+      <div class="giant" aria-hidden="true">{carousel.giant.map((g) => <span>{g}</span>)}</div>
+      <div class="cards">
+        {
+          carousel.cards.map((c) => (
+            <a class={`card c-${c.theme}`} href={c.href} {...ext(c.href)}>
+              <div class="t"><span>{c.left}</span><span>{c.right}</span></div>
+              <div><h3>{c.title}</h3><p>{c.text}</p></div>
+            </a>
           ))
         }
       </div>
-    </section>
+      <Btn href={site.cta.href} variant="d" class="cta-low">{site.cta.label}</Btn>
+    </div>
+  </section>
 
-    <section id="how" class="section">
-      <div class="container">
-        <h2 class="section-title">How it works in three steps</h2>
-        <div class="steps">
+  <!-- Beyond (pinned, growing star + stats) -->
+  <section class="beyond pin" data-pin="beyond" data-nav="dark" aria-labelledby="b-h">
+    <div class="pin-in">
+      <h2 class="sr" id="b-h">{beyond.heading}</h2>
+      <div class="b-top" aria-hidden="true">{beyond.top}</div>
+      <div class="b-star" aria-hidden="true"><Star /></div>
+      <p class="b-copy">{beyond.copy}</p>
+      <div class="b-stats">
+        {beyond.stats.map((s) => <div><b>{s.value}</b><span class="mono">{s.label}</span></div>)}
+      </div>
+      <div class="b-bot" aria-hidden="true">{beyond.bottom}</div>
+    </div>
+  </section>
+
+  <!-- How it works (pinned, horizontal step cards) -->
+  <section class="work pin" data-pin="work" data-nav="dark" aria-labelledby="w-h">
+    <div class="pin-in">
+      <p class="lbl mono">{work.label}</p>
+      <h2 class="sr" id="w-h">{work.heading}</h2>
+      <div class="wtrack">
+        {
+          work.steps.map((s) => (
+            <a class="wk" href={s.href}>
+              <div class={`art ${s.art}`}></div>
+              <div class="t"><span>{s.left}</span><span>{s.right}</span></div>
+              <div class="b"><h3>{s.title}</h3><p>{s.text}</p></div>
+            </a>
+          ))
+        }
+        <div class="wk end">
+          <h3>{work.endTitle}</h3>
+          <Btn href={site.cta.href} variant="w">{site.cta.label}</Btn>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof tiles (pinned, parallax) -->
+  <section class="float pin" data-pin="float" data-nav="dark" aria-labelledby="f-h">
+    <div class="pin-in">
+      <div class="f-title"><div><h2 id="f-h">{float.title}</h2><p>{float.sub}</p></div></div>
+      {tiles.map((f) => <div class={`fl ${f.blur}`} data-s={f.s} style={f.style} aria-hidden="true">{f.label}</div>)}
+    </div>
+  </section>
+
+  <!-- Proof / authority -->
+  <section class="proof" data-nav="dark">
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <p class="mono" style="color:rgba(255,255,255,.68)">{proof.kicker}</p>
+          <Words text={proof.title} />
+          <ul class="creds">
+            {proof.creds.map((c) => <li><b>{c.title}</b><em>{c.tag}</em><span>{c.text}</span></li>)}
+          </ul>
           {
-            steps.map((s, i) => (
-              <div class="step">
-                <span class="num">{String(i + 1).padStart(2, "0")}</span>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
+            proof.badge.src && (
+              <a class="badge" href={proof.badge.href} target="_blank" rel="noopener noreferrer">
+                <img src={proof.badge.src} alt={proof.badge.alt} width="104" height="104" loading="lazy" decoding="async" />
+              </a>
+            )
+          }
+        </div>
+        <div class="vids">
+          {
+            proof.videos.map((v) => (
+              <div class="vid">
+                <div class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 4l14 8-14 8z"></path></svg></div>
+                <b>{v.title}</b>
+                <span>{v.text}</span>
               </div>
             ))
           }
         </div>
-        <div class="center"><BookButton>Start with a clean CRM</BookButton></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="proof" class="section alt">
-      <div class="container">
-        <h2 class="section-title">Proof, not promises</h2>
-        <div class="pills">
-          {skills.map((s) => <span>{s}</span>)}
-        </div>
-        <div class="testimonials">
-          {
-            testimonials.map((t) => (
-              <blockquote>
-                "{t.quote}"<cite>{t.author}</cite>
-              </blockquote>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" class="section">
-      <div class="container narrow">
-        <h2 class="section-title">Straight answers</h2>
-        {
-          faqs.map((f) => (
-            <details>
-              <summary>{f.q}</summary>
-              <p>{f.a}</p>
-            </details>
-          ))
-        }
-      </div>
-    </section>
-
-    <section class="final-cta">
-      <div class="container center">
-        <h2>Ready for a CRM that actually works?</h2>
-        <BookButton>Book Discovery Call</BookButton>
-      </div>
-    </section>
-  </main>
-
-  <Footer />
+  <!-- FAQ -->
+  <section class="light sheet" data-nav="light" id="faq">
+    <div class="wrap">
+      <p class="mono kick">FAQ</p>
+      <Words text={home.faqTitle} />
+      <Faq />
+    </div>
+  </section>
 </Layout>

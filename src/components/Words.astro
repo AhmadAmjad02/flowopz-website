@@ -1,0 +1,25 @@
+---
+// Heading split into words for the rise / reveal animations.
+// mode "hh" animates on load (heroes), "sp" reveals on scroll.
+interface Props {
+  text: string;
+  dim?: string;
+  as?: "h1" | "h2";
+  mode?: "hh" | "sp";
+  dimClass?: "dim" | "dimline";
+  id?: string;
+}
+
+const { text, dim = "", as: Tag = "h2", mode = "sp", dimClass = "dim", id } = Astro.props;
+const main = text.split(/\s+/).filter(Boolean);
+const faded = dim.split(/\s+/).filter(Boolean);
+---
+
+<Tag class={mode} id={id}>
+  {main.map((w, i) => <Fragment><span class="wd"><span style={`--i:${i}`}>{w}</span></span>{" "}</Fragment>)}
+  {faded.length > 0 && (
+    <span class={dimClass}>
+      {faded.map((w, i) => <Fragment><span class="wd"><span style={`--i:${main.length + i}`}>{w}</span></span>{" "}</Fragment>)}
+    </span>
+  )}
+</Tag>

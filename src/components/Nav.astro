@@ -1,0 +1,16 @@
+---
+import Star from "./Star.astro";
+import { site, nav } from "../data/site";
+
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+
+<header class="nav" data-t="dark">
+  <a class="logo" href="/" aria-label={`${site.name} home`}><Star /></a>
+  {nav.map((n) => <a class="l" href={n.href} aria-current={path === n.href ? "page" : undefined}>{n.label}</a>)}
+  <a class="cta" href={site.cta.href}>Book a call</a>
+  <details class="menu">
+    <summary>Menu</summary>
+    <div>{nav.map((n) => <a href={n.href}>{n.label}</a>)}</div>
+  </details>
+</header>

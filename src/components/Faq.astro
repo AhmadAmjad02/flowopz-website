@@ -1,0 +1,19 @@
+---
+import { faqs } from "../data/site";
+
+interface Props {
+  style?: string;
+}
+const { style } = Astro.props;
+---
+
+<div class="faq rv" style={style}>
+  {
+    faqs.map((f) => (
+      <details>
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))
+  }
+</div>

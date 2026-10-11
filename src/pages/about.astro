@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import Words from "../components/Words.astro";
+import Btn from "../components/Btn.astro";
+import { site, about, home } from "../data/site";
+
+const badge = home.proof.badge;
+---
+
+<Layout title={`About | ${site.name}`}>
+  <PageHero title={about.title} dim={about.dim}>
+    <p>{about.text}</p>
+    <Btn href={site.cta.href} variant="w">{site.cta.label}</Btn>
+  </PageHero>
+
+  <section class="light" data-nav="light">
+    <div class="wrap">
+      <div class="prose rv">{about.prose.map((p) => <p>{p}</p>)}</div>
+      <div class="split" style="margin-top:70px">
+        <Words text={about.focusTitle} />
+        <ol class="plist rv">{about.focus.map((p) => <li>{p}</li>)}</ol>
+      </div>
+      <div class="split">
+        <Words text={about.credsTitle} />
+        <div class="rv">
+          <div class="row">
+            {about.creds.map((c) => <Btn href={c.href} variant={c.style as "d" | "o"}>{c.label}</Btn>)}
+          </div>
+          {
+            badge.src && (
+              <a class="badge" style="margin-top:34px" href={badge.href} target="_blank" rel="noopener noreferrer">
+                <img src={badge.src} alt={badge.alt} width="104" height="104" loading="lazy" decoding="async" />
+              </a>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

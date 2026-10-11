@@ -1,0 +1,17 @@
+---
+// Shorter hero used on inner pages.
+import Words from "./Words.astro";
+
+interface Props {
+  title: string;
+  dim?: string;
+}
+const { title, dim } = Astro.props;
+---
+
+<section class="hero sm" data-nav="dark">
+  <div class="hero-in">
+    <Words as="h1" mode="hh" text={title} dim={dim} dimClass="dimline" />
+    <div class="hero-low"><slot /></div>
+  </div>
+</section>

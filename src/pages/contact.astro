@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import Btn from "../components/Btn.astro";
+import Arrow from "../components/Arrow.astro";
+import { site, contact } from "../data/site";
+
+const calendly = site.calendlyUrl
+  ? `${site.calendlyUrl}${site.calendlyUrl.includes("?") ? "&" : "?"}hide_gdpr_banner=1&primary_color=4a14b8&embed_type=Inline`
+  : "";
+---
+
+<Layout title={`Contact | ${site.name}`}>
+  <PageHero title={contact.title} dim={contact.dim}>
+    <ul class="expect">{contact.expect.map((e) => <li>{e}</li>)}</ul>
+    <div class="row">
+      {site.whatsapp && <Btn href={`https://wa.me/${site.whatsapp}`} variant="w">{site.whatsappLabel}</Btn>}
+      <Btn href={`mailto:${site.email}`} variant={site.whatsapp ? "g" : "w"}>{site.email}</Btn>
+    </div>
+  </PageHero>
+
+  <section class="light" data-nav="light" style="padding-top:clamp(40px,6vw,80px)">
+    <div class="wrap">
+      <div class="cgrid">
+        <div class="embed">
+          {
+            calendly ? (
+              <iframe data-calendly={calendly} title="Book a discovery call" scrolling="no" width="100%" height="900"></iframe>
+            ) : (
+              <p class="empty">Booking calendar coming soon. Add your Calendly link in <code>src/data/site.ts</code>.</p>
+            )
+          }
+        </div>
+        <form id="lead" data-webhook={site.formWebhook} data-email={site.email} novalidate>
+          <h2>{contact.formTitle}</h2>
+          <label>Name<input name="name" autocomplete="name" required /></label>
+          <label>Email<input name="email" type="email" autocomplete="email" required /></label>
+          <label>Phone<input name="phone" type="tel" autocomplete="tel" /></label>
+          <label>Business type<input name="business" placeholder={contact.businessPlaceholder} /></label>
+          <label>Biggest challenge<textarea name="challenge"></textarea></label>
+          <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <button class="btn v" type="submit">Send request<Arrow /></button>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>

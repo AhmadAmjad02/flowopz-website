@@ -1,0 +1,20 @@
+---
+import Arrow from "./Arrow.astro";
+
+interface Props {
+  href: string;
+  // w = white, g = glass, d = dark, v = violet, o = outline
+  variant?: "w" | "g" | "d" | "v" | "o";
+  class?: string;
+}
+
+const { href, variant = "w", class: className } = Astro.props;
+const external = /^https?:/.test(href);
+---
+
+<a
+  class:list={["btn", variant, className]}
+  href={href}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener" : undefined}
+><slot /><Arrow /></a>
