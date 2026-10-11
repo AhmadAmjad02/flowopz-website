@@ -109,7 +109,6 @@ export const home = {
     },
     // Small notification chips floating around the card
     floats: {
-      lead: { title: "New lead captured", sub: "Assigned to pipeline · 2s ago" },
       saved: { value: "20+ hrs", label: "saved per week" },
     },
     caption: "Book a discovery call, get your setup, and use your included support hours.",
