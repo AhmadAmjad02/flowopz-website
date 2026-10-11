@@ -42,7 +42,7 @@ const stars = [0, 1, 2, 3, 4];
         <figcaption>
           <b>{r.author}</b>
           <span>{r.project}</span>
-          <span class="mono">Upwork · {r.date}</span>
+          <span class="mono">{r.source ?? "Upwork"} · {r.date}</span>
         </figcaption>
       </figure>
     ))

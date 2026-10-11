@@ -72,7 +72,16 @@ export const upwork = {
       project: "n8n Automation Tech",
       date: "May 2026",
     },
-  ],
+    {
+      quote: "Muhammad is very skilled in n8n and GHL automation. He builds simple, smart workflows that save time and money. He understands business needs and delivers fast, clean, reliable results. Highly recommended.",
+      author: "Ihsan U.",
+      project: "n8n & GHL automation",
+      date: "Feb 2026",
+      source: "Upwork testimonial",
+    },
+    // Reviews from outside Upwork: add them here with a `source`, e.g.
+    // { quote: "...", author: "Jane D.", project: "GHL setup", date: "Jan 2026", source: "Google" },
+  ] as { quote: string; author: string; project: string; date: string; source?: string }[],
 };
 
 // Footer "Proof" column (Upwork, directory listings, reviews, etc.)
