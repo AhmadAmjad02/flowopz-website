@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Words from "../components/Words.astro";
 import Btn from "../components/Btn.astro";
-import Star from "../components/Star.astro";
+import Mark from "../components/Mark.astro";
 import Arrow from "../components/Arrow.astro";
 import Faq from "../components/Faq.astro";
 import Reviews from "../components/Reviews.astro";
@@ -62,7 +62,7 @@ const ext = (href: string) => (/^https?:/.test(href) ? { target: "_blank", rel: 
             <div class="hcard-m">
               <div class="hcard" aria-hidden="true">
                 <div class="tp">
-                  <span class="chip"><Star />{hero.card.chip}</span>
+                  <span class="chip"><Mark />{hero.card.chip}</span>
                   <span class="chip live">{hero.card.status}</span>
                 </div>
 
@@ -147,7 +147,7 @@ const ext = (href: string) => (/^https?:/.test(href) ? { target: "_blank", rel: 
     <div class="pin-in">
       <h2 class="sr" id="b-h">{beyond.heading}</h2>
       <div class="b-top" aria-hidden="true">{beyond.top}</div>
-      <div class="b-star" aria-hidden="true"><Star /></div>
+      <div class="b-star" aria-hidden="true"><Mark /></div>
       <p class="b-copy">{beyond.copy}</p>
       <div class="b-stats">
         {beyond.stats.map((s) => <div><b>{s.value}</b><span class="mono">{s.label}</span></div>)}

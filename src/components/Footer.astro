@@ -1,5 +1,5 @@
 ---
-import Star from "./Star.astro";
+import Logo from "./Logo.astro";
 import { site, nav, proofLinks } from "../data/site";
 
 const year = new Date().getFullYear();
@@ -16,8 +16,7 @@ const ext = (href: string) => (/^https?:/.test(href) ? { target: "_blank", rel: 
   <div class="wrap">
     <div class="grid">
       <div>
-        <Star class="mark" />
-        <div class="big">{site.name}</div>
+        <Logo class="big" />
         <p class="tag">{site.tagline}</p>
       </div>
       <div class="cols">
