@@ -1,0 +1,50 @@
+---
+// Upwork summary + client review cards.
+import Btn from "./Btn.astro";
+import { upwork } from "../data/site";
+
+interface Props {
+  title?: string;
+}
+const { title } = Astro.props;
+const stars = [0, 1, 2, 3, 4];
+---
+
+<div class="reviews">
+  <div class="up-sum rv">
+    <div class="up-top">
+      <span class="mono">{title ?? "Client reviews"}</span>
+      <span class="chip live">{upwork.badge}</span>
+    </div>
+    <div class="up-score">
+      <b>{upwork.rating}</b>
+      <div>
+        <div class="stars" aria-label={`Rated ${upwork.rating} out of 5`}>
+          {stars.map(() => <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z"></path></svg>)}
+        </div>
+        <span>{upwork.ratingCount} ratings on Upwork</span>
+      </div>
+    </div>
+    <ul class="up-stats">
+      <li><b>{upwork.jobSuccess}</b><span class="mono">Job Success</span></li>
+      <li><b>{upwork.totalJobs}</b><span class="mono">Total jobs</span></li>
+      <li><b>{upwork.totalHours}</b><span class="mono">Hours</span></li>
+    </ul>
+    <Btn href={upwork.url} variant="w">View Upwork profile</Btn>
+  </div>
+  {
+    upwork.reviews.map((r, i) => (
+      <figure class="review rv" style={`--d:${(i % 2) * 0.08}s`}>
+        <div class="stars" aria-label="Rated 5 out of 5">
+          {stars.map(() => <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z"></path></svg>)}
+        </div>
+        <blockquote>&ldquo;{r.quote}&rdquo;</blockquote>
+        <figcaption>
+          <b>{r.author}</b>
+          <span>{r.project}</span>
+          <span class="mono">Upwork · {r.date}</span>
+        </figcaption>
+      </figure>
+    ))
+  }
+</div>

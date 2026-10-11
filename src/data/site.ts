@@ -27,10 +27,58 @@ export const nav = [
   { label: "Contact", href: "/contact" },
 ];
 
+/* ---------------- Upwork profile + client reviews ---------------- */
+// Copied from the public Upwork profile. Update when new reviews come in.
+
+export const upwork = {
+  url: "https://www.upwork.com/freelancers/muhammadu649",
+  name: "Muhammad Umar",
+  headline: "GoHighLevel (GHL) Expert | GHL Setup & Funnel Builder | GHL Automation",
+  badge: "Top Rated",
+  jobSuccess: "100%",
+  rating: "5.0",
+  ratingCount: 7,
+  totalJobs: "28",
+  totalHours: "1.5K",
+  experience: "5+ years",
+  reviews: [
+    {
+      quote: "Great experience working with him! He helped me build and set up my GHL round-robin automation exactly how I needed it. Very knowledgeable, responsive, and got everything working properly. Highly recommend!",
+      author: "Sergio A.",
+      project: "Operations Manager",
+      date: "Oct 2026",
+    },
+    {
+      quote: "Thank you again Muhammad! He helped me on the zoom fix my issue and completely fixed it and made sure it worked properly. Will 10/10 be coming back to him in the near future.",
+      author: "Alaiza U.",
+      project: "Fix Make.com → Stripe dynamic pricing checkout link for GoHighLevel",
+      date: "Sep 2026",
+    },
+    {
+      quote: "Incredible turnaround time! Mohammad fixed an automation issue in 30 minutes that I had been struggling with for four hours. He is a hardworking professional who clearly understands the nuances of GHL webhooks and n8n workflows. Highly recommended for any business looking to streamline their operations.",
+      author: "Ahmed N.",
+      project: "Connect GHL Webhooks with N8N & Build Weekly Lead Reports",
+      date: "Mar 2026",
+    },
+    {
+      quote: "Muhammad was the best that I have personally witnessed on Upwork. Great communicator and always available when I had a question.",
+      author: "Muhammad S.",
+      project: "GHL Workflow Troubleshooting and Pipeline Creation",
+      date: "Mar 2026",
+    },
+    {
+      quote: "Did a Great Job and finished the work with quality.",
+      author: "Jim M.",
+      project: "n8n Automation Tech",
+      date: "May 2026",
+    },
+  ],
+};
+
 // Footer "Proof" column (Upwork, directory listings, reviews, etc.)
 export const proofLinks = [
-  { label: "Upwork", href: "#" },
-  { label: "Reviews", href: "#" },
+  { label: "Upwork", href: upwork.url },
+  { label: "Reviews", href: "/#reviews" },
 ];
 
 /* ---------------- Home ---------------- */
@@ -41,7 +89,7 @@ export const home = {
     dim: "Includes X hours of support.",
     text: "Flowopz builds clean CRM systems and automations for growing businesses. Start with a working setup, add monthly support when you're stuck, or get a custom build after a proper audit.",
     secondary: { label: "See how support works", href: "/services#support" },
-    pill: "Certified CRM experts · XX+ projects delivered",
+    pill: `${upwork.badge} on Upwork · ${upwork.jobSuccess} Job Success`,
     card: {
       chip: "Flowopz",
       status: "READY",
@@ -60,8 +108,8 @@ export const home = {
       { theme: "purple", left: "Start here", right: "crm.setup", title: "Your CRM set up for $XX", text: "Includes X hours of support.", href: "/get-started" },
       { theme: "lime", left: "Support", right: "$XXX/month", title: "Expert help when you're stuck", text: "Book a call whenever something doesn't work.", href: "/services#support" },
       { theme: "teal", left: "Custom build", right: "audit + proposal", title: "Built around your business", text: "Audit first. Clear scope, hours and price.", href: "/services#custom" },
-      { theme: "blue", left: "Certified", right: "Credential", title: "Your certification here", text: "Short proof line goes here.", href: "#" },
-      { theme: "chrome", left: "Track record", right: "XX+", title: "XX+ projects delivered", text: "Real client systems, shipped.", href: "#" },
+      { theme: "blue", left: "Upwork", right: upwork.badge, title: `${upwork.badge}, ${upwork.jobSuccess} Job Success`, text: `${upwork.rating} rating from real Upwork clients.`, href: upwork.url },
+      { theme: "chrome", left: "Track record", right: `${upwork.totalJobs} jobs`, title: `${upwork.totalHours} hours on Upwork`, text: "Real client systems, shipped.", href: "/#reviews" },
     ],
   },
 
@@ -74,7 +122,7 @@ export const home = {
       { value: "$XX", label: "Setup" },
       { value: "X hrs", label: "Support included" },
       { value: "$XXX/mo", label: "Ongoing support" },
-      { value: "XX+", label: "Projects delivered" },
+      { value: upwork.jobSuccess, label: "Job Success on Upwork" },
     ],
   },
 
@@ -92,26 +140,22 @@ export const home = {
 
   float: {
     title: "Proof, not promises.",
-    sub: "Certified CRM experts. XX+ projects delivered.",
+    sub: `${upwork.badge} on Upwork. ${upwork.jobSuccess} Job Success. ${upwork.rating} rating.`,
     // Labels shown on the floating tiles (in order)
-    tiles: ["Workflows", "Certified experts", "Pipelines", "Calendars", "Forms", "XX+ projects"],
+    tiles: ["Workflows", `${upwork.badge} on Upwork`, "Pipelines", "Calendars", "Forms", `${upwork.jobSuccess} Job Success`],
   },
 
   proof: {
     kicker: "Proof / authority",
     title: "Built by a team that ships real CRMs.",
     creds: [
-      { title: "Your certification", tag: "Verified", text: "Where it is listed or verified." },
-      { title: "XX+ projects delivered", tag: "Track record", text: "Helping businesses with systems and automation." },
+      { title: `${upwork.badge} on Upwork`, tag: "Verified", text: `${upwork.jobSuccess} Job Success and a ${upwork.rating} client rating.` },
+      { title: `${upwork.totalJobs} jobs, ${upwork.totalHours} hours`, tag: "Track record", text: `${upwork.experience} helping businesses with GoHighLevel, n8n and Zapier automation.` },
       { title: "Practical, usable setups", tag: "Approach", text: "What gets used beats what looks impressive." },
     ],
     // Optional badge image placed in /public (e.g. "/badge.webp"). Empty = hidden.
     badge: { src: "", alt: "Certification badge", href: "#" },
-    videos: [
-      { title: "Client video", text: "Testimonial coming soon" },
-      { title: "Client video", text: "Testimonial coming soon" },
-      { title: "Client video", text: "Testimonial coming soon" },
-    ],
+    reviewsTitle: "What clients say on Upwork",
   },
 
   faqTitle: "Straight answers.",
@@ -128,7 +172,7 @@ export const faqs = [
   { q: "How much does the CRM setup cost?", a: "The setup is $XX and includes X hours of support. You pay on your discovery call and get access right away." },
   { q: "What does $XXX/month support include?", a: "You book calls when you need help. We explain the best and easiest way to set up or fix something in your CRM. It is guidance and support, not a full done-for-you build." },
   { q: "How does a custom build work?", a: "We start with an audit call, understand your needs, then send a proposal with estimated hours and price. Work starts only after you approve." },
-  { q: "Who will I be working with?", a: "You work directly with the Flowopz team." },
+  { q: "Who will I be working with?", a: `You work directly with ${upwork.name}, a ${upwork.badge} GoHighLevel and automation expert on Upwork with ${upwork.jobSuccess} Job Success.` },
 ];
 
 /* ---------------- Services ---------------- */
@@ -219,7 +263,7 @@ export const about = {
   credsTitle: "Credentials",
   creds: [
     { label: "Your certification", href: "#", style: "d" },
-    { label: "Upwork, XX+ projects", href: "#", style: "o" },
+    { label: `Upwork, ${upwork.badge}`, href: upwork.url, style: "o" },
   ],
 };
 

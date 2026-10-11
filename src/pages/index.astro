@@ -5,6 +5,7 @@ import Btn from "../components/Btn.astro";
 import Star from "../components/Star.astro";
 import Arrow from "../components/Arrow.astro";
 import Faq from "../components/Faq.astro";
+import Reviews from "../components/Reviews.astro";
 import { site, home } from "../data/site";
 
 const { hero, carousel, beyond, work, float, proof } = home;
@@ -133,7 +134,7 @@ const ext = (href: string) => (/^https?:/.test(href) ? { target: "_blank", rel: 
   </section>
 
   <!-- Proof / authority -->
-  <section class="proof" data-nav="dark">
+  <section class="proof" data-nav="dark" id="reviews">
     <div class="wrap">
       <div class="grid">
         <div>
@@ -150,17 +151,7 @@ const ext = (href: string) => (/^https?:/.test(href) ? { target: "_blank", rel: 
             )
           }
         </div>
-        <div class="vids">
-          {
-            proof.videos.map((v) => (
-              <div class="vid">
-                <div class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 4l14 8-14 8z"></path></svg></div>
-                <b>{v.title}</b>
-                <span>{v.text}</span>
-              </div>
-            ))
-          }
-        </div>
+        <Reviews title={proof.reviewsTitle} />
       </div>
     </div>
   </section>
