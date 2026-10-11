@@ -164,7 +164,8 @@ export const home = {
     title: "Built by a team that ships real CRMs.",
     creds: [
       { title: `${upwork.badge} on Upwork`, tag: "Verified", text: `${upwork.jobSuccess} Job Success and a ${upwork.rating} client rating.` },
-      { title: `${upwork.totalJobs} jobs, ${upwork.totalHours} hours`, tag: "Track record", text: `${upwork.experience} helping businesses with GoHighLevel, n8n and Zapier automation.` },
+      // Hidden for now — uncomment to show again
+      // { title: `${upwork.totalJobs} jobs, ${upwork.totalHours} hours`, tag: "Track record", text: `${upwork.experience} helping businesses with GoHighLevel, n8n and Zapier automation.` },
       { title: "Practical, usable setups", tag: "Approach", text: "What gets used beats what looks impressive." },
     ],
     // Optional badge image placed in /public (e.g. "/badge.webp"). Empty = hidden.
