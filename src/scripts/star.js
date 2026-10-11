@@ -37,10 +37,10 @@ float map(vec3 p){
 vec3 nor(vec3 p){vec2 e=vec2(.004,0.);return normalize(vec3(map(p+e.xyy)-map(p-e.xyy),map(p+e.yxy)-map(p-e.yxy),map(p+e.yyx)-map(p-e.yyx)));}
 vec3 env(vec3 r){
   float y=r.y*.5+.5;
-  vec3 c=mix(vec3(.05,.02,.14),vec3(.78,.62,1.),smoothstep(.0,1.,y));
+  vec3 c=mix(vec3(.03,.03,.035),vec3(.78,.78,.84),smoothstep(.0,1.,y));
   c+=vec3(1.)*smoothstep(.45,.95,r.y)*1.9;
   c+=vec3(1.,.95,1.)*pow(max(dot(r,normalize(vec3(.7,.35,.6))),0.),10.)*2.6;
-  c+=vec3(.7,.55,1.)*pow(max(dot(r,normalize(vec3(-.8,-.1,.5))),0.),8.)*1.6;
+  c+=vec3(.66,.66,.72)*pow(max(dot(r,normalize(vec3(-.8,-.1,.5))),0.),8.)*1.6;
   c+=vec3(.9)*smoothstep(.12,.0,abs(r.x*.8+r.y*.5-.15))*.9;
   c*=.5+.5*smoothstep(-.3,.3,sin(r.y*6.+r.x*3.));
   return c;
@@ -54,7 +54,7 @@ void main(){
   vec3 p=ro+rd*t,n=nor(p);
   vec3 r=reflect(rd,n);
   float fr=pow(1.-max(dot(-rd,n),0.),3.);
-  vec3 col=env(r)*(.55+.6*fr)+vec3(.8,.7,1.)*fr*.45;
+  vec3 col=env(r)*(.55+.6*fr)+vec3(.85,.85,.9)*fr*.45;
   gl_FragColor=vec4(pow(col,vec3(.92)),1.);
 }`;
 

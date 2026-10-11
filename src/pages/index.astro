@@ -14,15 +14,15 @@ const { hero, carousel, beyond, work, float, proof } = home;
 // Labels come from home.float.tiles; the three small blurred orbs have no label.
 const t = float.tiles;
 const tiles = [
-  { label: t[0], blur: "b1", s: 1.7, style: "left:8%;top:24%;width:clamp(120px,22vw,320px);aspect-ratio:1.6;background:linear-gradient(135deg,#cfd9f6,#7f98e6)" },
-  { label: t[1], blur: "b1", s: 1.9, style: "left:62%;top:14%;width:clamp(120px,20vw,300px);aspect-ratio:1.5;background:radial-gradient(60% 60% at 50% 40%,rgba(255,255,255,.55),transparent 70%),linear-gradient(160deg,#7d30e4,#240868)" },
+  { label: t[0], blur: "b1", s: 1.7, style: "left:8%;top:24%;width:clamp(120px,22vw,320px);aspect-ratio:1.6;background:linear-gradient(135deg,#F2F2F4,#8A8A94)" },
+  { label: t[1], blur: "b1", s: 1.9, style: "left:62%;top:14%;width:clamp(120px,20vw,300px);aspect-ratio:1.5;background:radial-gradient(60% 60% at 50% 40%,rgba(255,255,255,.3),transparent 70%),linear-gradient(160deg,#3A3A40,#070708)" },
   { label: t[2], blur: "b2", s: 2.3, style: "left:70%;top:56%;width:clamp(90px,15vw,220px);aspect-ratio:1.3;background:conic-gradient(from 30deg,#f6f6f8,#8a8a96,#efeff2,#6c6c79,#f6f6f8)" },
-  { label: t[3], blur: "b2", s: 1.5, style: "left:16%;top:62%;width:clamp(90px,16vw,230px);aspect-ratio:1.4;background:radial-gradient(60% 60% at 50% 45%,#27c3b1,#06302e)" },
-  { label: t[4], blur: "b3", s: 2.7, style: "left:44%;top:72%;width:clamp(70px,11vw,160px);aspect-ratio:1.2;background:radial-gradient(50% 50% at 40% 60%,#c9ff3d,#0b0f0d 75%)" },
-  { label: "", blur: "b3", s: 2.2, style: "left:3%;top:6%;width:clamp(60px,9vw,130px);aspect-ratio:1.2;background:radial-gradient(50% 50% at 50% 50%,#ffa046,#2a0f02 75%)" },
-  { label: "", blur: "b3", s: 1.3, style: "left:46%;top:3%;width:clamp(60px,9vw,130px);aspect-ratio:1.2;background:radial-gradient(50% 50% at 50% 50%,#b36cff,#16062f 75%)" },
-  { label: "", blur: "b3", s: 1.9, style: "left:86%;top:22%;width:clamp(60px,9vw,130px);aspect-ratio:1.2;background:radial-gradient(50% 50% at 50% 50%,#2fd1bf,#03201e 75%)" },
-  { label: t[5], blur: "b2", s: 2.9, style: "left:30%;top:40%;width:clamp(80px,12vw,180px);aspect-ratio:1.5;background:linear-gradient(150deg,#e8e0fb,#9a82e8)" },
+  { label: t[3], blur: "b2", s: 1.5, style: "left:16%;top:62%;width:clamp(90px,16vw,230px);aspect-ratio:1.4;background:radial-gradient(60% 60% at 50% 45%,#8A8A94,#18181B)" },
+  { label: t[4], blur: "b3", s: 2.7, style: "left:44%;top:72%;width:clamp(70px,11vw,160px);aspect-ratio:1.2;background:radial-gradient(50% 50% at 40% 60%,#C6F432,#0E0E10 75%)" },
+  { label: "", blur: "b3", s: 2.2, style: "left:3%;top:6%;width:clamp(60px,9vw,130px);aspect-ratio:1.2;background:radial-gradient(50% 50% at 50% 50%,#A9A9B2,#18181B 75%)" },
+  { label: "", blur: "b3", s: 1.3, style: "left:46%;top:3%;width:clamp(60px,9vw,130px);aspect-ratio:1.2;background:radial-gradient(50% 50% at 50% 50%,#71717A,#18181B 75%)" },
+  { label: "", blur: "b3", s: 1.9, style: "left:86%;top:22%;width:clamp(60px,9vw,130px);aspect-ratio:1.2;background:radial-gradient(50% 50% at 50% 50%,#71717A,#0E0E10 75%)" },
+  { label: t[5], blur: "b2", s: 2.9, style: "left:30%;top:40%;width:clamp(80px,12vw,180px);aspect-ratio:1.5;background:linear-gradient(150deg,#F2F2F4,#A9A9B2)" },
 ];
 
 const ext = (href: string) => (/^https?:/.test(href) ? { target: "_blank", rel: "noopener" } : {});
