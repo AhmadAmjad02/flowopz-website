@@ -6,13 +6,16 @@ import Arrow from "../components/Arrow.astro";
 import { site, contact } from "../data/site";
 
 const calendly = site.calendlyUrl
-  ? `${site.calendlyUrl}${site.calendlyUrl.includes("?") ? "&" : "?"}hide_gdpr_banner=1&primary_color=4a14b8&embed_type=Inline`
+  ? `${site.calendlyUrl}${site.calendlyUrl.includes("?") ? "&" : "?"}hide_gdpr_banner=1&primary_color=1c1c20&embed_type=Inline`
   : "";
 ---
 
 <Layout title={`Contact | ${site.name}`}>
-  <PageHero title={contact.title} dim={contact.dim}>
-    <ul class="expect">{contact.expect.map((e) => <li>{e}</li>)}</ul>
+  <PageHero eyebrow={contact.eyebrow} title={contact.title} dim={contact.dim}>
+    <div class="contact-low">
+      <p>{contact.text}</p>
+      <ul class="cdetails">{contact.details.map((d) => <li><span class="mono">{d.label}</span><b>{d.value}</b></li>)}</ul>
+    </div>
     <div class="row">
       {site.whatsapp && <Btn href={`https://wa.me/${site.whatsapp}`} variant="w">{site.whatsappLabel}</Btn>}
       <Btn href={`mailto:${site.email}`} variant={site.whatsapp ? "g" : "w"}>{site.email}</Btn>
@@ -25,7 +28,7 @@ const calendly = site.calendlyUrl
         <div class="embed">
           {
             calendly ? (
-              <iframe data-calendly={calendly} title="Book a discovery call" scrolling="no" width="100%" height="900"></iframe>
+              <iframe data-calendly={calendly} title="Book a free consultation" scrolling="no" width="100%" height="900"></iframe>
             ) : (
               <p class="empty">Booking calendar coming soon. Add your Calendly link in <code>src/data/site.ts</code>.</p>
             )
@@ -33,11 +36,17 @@ const calendly = site.calendlyUrl
         </div>
         <form id="lead" data-webhook={site.formWebhook} data-email={site.email} novalidate>
           <h2>{contact.formTitle}</h2>
-          <label>Name<input name="name" autocomplete="name" required /></label>
-          <label>Email<input name="email" type="email" autocomplete="email" required /></label>
-          <label>Phone<input name="phone" type="tel" autocomplete="tel" /></label>
-          <label>Business type<input name="business" placeholder={contact.businessPlaceholder} /></label>
-          <label>Biggest challenge<textarea name="challenge"></textarea></label>
+          <label>Full Name<input name="name" autocomplete="name" required /></label>
+          <label>Business Email<input name="email" type="email" autocomplete="email" required /></label>
+          <label>Company / Agency Name<input name="company_name" autocomplete="organization" /></label>
+          <label>Service Required
+            <select name="service">
+              <option value="">Select a service</option>
+              {contact.serviceOptions.map((o) => <option>{o}</option>)}
+            </select>
+          </label>
+          <label>Estimated Timeline<input name="timeline" placeholder={contact.timelinePlaceholder} /></label>
+          <label>Project Details<textarea name="details"></textarea></label>
           <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <button class="btn v" type="submit">Send request<Arrow /></button>
           <p class="status" id="status" role="status" aria-live="polite"></p>

@@ -7,9 +7,12 @@ import { site, services } from "../data/site";
 ---
 
 <Layout title={`Services | ${site.name}`}>
-  <PageHero title={services.title} dim={services.dim}>
+  <PageHero eyebrow={services.eyebrow} title={services.title} dim={services.dim}>
     <p>{services.text}</p>
-    <Btn href={site.cta.href} variant="w">{site.cta.label}</Btn>
+    <div class="row">
+      <Btn href={site.cta.href} variant="w">{site.cta.label}</Btn>
+      <Btn href={site.offersCta.href} variant="g">{site.offersCta.label}</Btn>
+    </div>
   </PageHero>
 
   <section class="light" data-nav="light">
@@ -17,16 +20,16 @@ import { site, services } from "../data/site";
       <div class="offer">
         {
           services.offers.map((o, i) => (
-            <div class={`big-card rv ${o.style}`} id={o.id} style={`--d:${i * 0.1}s`}>
+            <div class={`big-card svc rv ${o.style}`} id={o.id} style={`--d:${(i % 2) * 0.1}s`}>
               <div>
                 <p class="mono">{o.kicker}</p>
                 <h2>{o.title}</h2>
-                <p class="pr">{o.price}{o.period && <small>{o.period}</small>}</p>
+                <p class="obj">{o.objective}</p>
               </div>
               <div>
-                <p>{o.text}</p>
+                <p class="mono">Deliverables</p>
                 <ul>{o.points.map((pt) => <li>{pt}</li>)}</ul>
-                <Btn href={site.cta.href} variant="w">{o.cta}</Btn>
+                <Btn href={site.cta.href} variant="w">{site.cta.label}</Btn>
               </div>
             </div>
           ))

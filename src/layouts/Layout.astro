@@ -1,16 +1,18 @@
 ---
 import "../styles/global.css";
 import Nav from "../components/Nav.astro";
-import FinalCta from "../components/FinalCta.astro";
+import FinalCta, { type FinalContent } from "../components/FinalCta.astro";
 import Footer from "../components/Footer.astro";
 import { site } from "../data/site";
 
 interface Props {
   title?: string;
   description?: string;
+  // Page-specific closing banner; defaults to home.final
+  final?: FinalContent;
 }
 
-const { title = site.title, description = site.description } = Astro.props;
+const { title = site.title, description = site.description, final } = Astro.props;
 ---
 
 <!doctype html>
@@ -40,7 +42,7 @@ const { title = site.title, description = site.description } = Astro.props;
     <main id="main">
       <slot />
     </main>
-    <FinalCta />
+    <FinalCta content={final} />
     <Footer />
     <script>
       import "../scripts/motion.js";

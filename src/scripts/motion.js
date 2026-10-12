@@ -52,10 +52,15 @@ if (form) {
         })
         .catch(() => (status.textContent = "Something went wrong. Please email us instead."));
     } else {
-      const body =
-        `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\n` +
-        `Business type: ${data.business}\nBiggest challenge: ${data.challenge}`;
-      location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent("Discovery call request")}&body=${encodeURIComponent(body)}`;
+      // One line per field, using each field's visible label
+      const body = Array.from(form.querySelectorAll("label"))
+        .map((l) => {
+          const field = l.querySelector("input, select, textarea");
+          return field ? `${l.firstChild.textContent.trim()}: ${data[field.name] || "-"}` : "";
+        })
+        .filter(Boolean)
+        .join("\n");
+      location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent("Project enquiry")}&body=${encodeURIComponent(body)}`;
       status.textContent = "Opening your email app. You can also book a time on the calendar.";
     }
   });

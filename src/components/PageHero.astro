@@ -5,13 +5,17 @@ import Words from "./Words.astro";
 interface Props {
   title: string;
   dim?: string;
+  eyebrow?: string;
 }
-const { title, dim } = Astro.props;
+const { title, dim, eyebrow } = Astro.props;
 ---
 
 <section class="hero sm" data-nav="dark">
   <div class="hero-in">
-    <Words as="h1" mode="hh" text={title} dim={dim} dimClass="dimline" />
+    <div class="hero-head">
+      {eyebrow && <p class="eyebrow"><span class="dot"></span>{eyebrow}</p>}
+      <Words as="h1" mode="hh" text={title} dim={dim} dimClass="dimline" />
+    </div>
     <div class="hero-low"><slot /></div>
   </div>
 </section>

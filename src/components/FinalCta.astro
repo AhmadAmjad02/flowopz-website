@@ -1,9 +1,15 @@
 ---
 import Words from "./Words.astro";
 import Btn from "./Btn.astro";
-import { site, home } from "../data/site";
+import { home } from "../data/site";
 
-const { final } = home;
+type Link = { label: string; href: string };
+export type FinalContent = { title: string; dim: string; note: string; primary: Link; secondary: Link };
+
+interface Props {
+  content?: FinalContent;
+}
+const final = Astro.props.content ?? home.final;
 ---
 
 <section class="final" data-nav="dark">
@@ -12,7 +18,7 @@ const { final } = home;
       <Words text={final.title} dim={final.dim} />
       <p class="n">{final.note}</p>
       <div class="row">
-        <Btn href={site.cta.href} variant="w">{site.cta.label}</Btn>
+        <Btn href={final.primary.href} variant="w">{final.primary.label}</Btn>
         <Btn href={final.secondary.href} variant="g">{final.secondary.label}</Btn>
       </div>
     </div>

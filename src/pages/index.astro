@@ -41,8 +41,8 @@ const ext = (href: string) => (/^https?:/.test(href) ? { target: "_blank", rel: 
         <div class="hero-low">
           <p>{hero.text}</p>
           <div class="row">
-            <Btn href={site.cta.href} variant="w">{site.cta.label}</Btn>
-            <Btn href={hero.secondary.href} variant="g">{hero.secondary.label}</Btn>
+            <Btn href={site.offersCta.href} variant="w">{site.offersCta.label}</Btn>
+            <Btn href={site.cta.href} variant="g">{site.cta.label}</Btn>
           </div>
           <a class="trust" href="#reviews">
             <span class="avatars" aria-hidden="true">
@@ -173,6 +173,7 @@ const ext = (href: string) => (/^https?:/.test(href) ? { target: "_blank", rel: 
         }
         <div class="wk end">
           <h3>{work.endTitle}</h3>
+          <p>{work.endText}</p>
           <Btn href={site.cta.href} variant="w">{site.cta.label}</Btn>
         </div>
       </div>

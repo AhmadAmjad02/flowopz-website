@@ -8,18 +8,26 @@ import { site, about, home } from "../data/site";
 const badge = home.proof.badge;
 ---
 
-<Layout title={`About | ${site.name}`}>
-  <PageHero title={about.title} dim={about.dim}>
+<Layout title={`About | ${site.name}`} final={about.final}>
+  <PageHero eyebrow={about.eyebrow} title={about.title} dim={about.dim}>
     <p>{about.text}</p>
     <Btn href={site.cta.href} variant="w">{site.cta.label}</Btn>
   </PageHero>
 
   <section class="light" data-nav="light">
     <div class="wrap">
-      <div class="prose rv">{about.prose.map((p) => <p>{p}</p>)}</div>
+      <p class="mono kick">{about.philosophyKicker}</p>
+      <Words text={about.philosophyTitle} />
+      <div class="prose rv" style="margin-top:34px">{about.prose.map((p) => <p>{p}</p>)}</div>
       <div class="split" style="margin-top:70px">
-        <Words text={about.focusTitle} />
-        <ol class="plist rv">{about.focus.map((p) => <li>{p}</li>)}</ol>
+        <Words text={about.valuesTitle} />
+        <ol class="plist rv">{about.values.map((v) => <li><span><b>{v.title}.</b> {v.text}</span></li>)}</ol>
+      </div>
+      <div class="split">
+        <Words text={about.toolkitTitle} />
+        <ul class="tools rv">
+          {about.toolkit.map((t) => <li><span class="mono">{t.category}</span><b>{t.tools}</b></li>)}
+        </ul>
       </div>
       <div class="split">
         <Words text={about.credsTitle} />
