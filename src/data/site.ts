@@ -3,10 +3,10 @@
 
 export const site = {
   name: "FlowOpz",
-  title: "FlowOpz | Web Development, GoHighLevel & Workflow Automation",
+  title: "FlowOpz | GoHighLevel & Workflow Automation",
   description:
-    "We engineer responsive websites, custom GoHighLevel snapshots, and multi-app automations that run your business on autopilot—at an agile, accessible rate.",
-  tagline: "High-efficiency web development, GHL architecture, and automated backend infrastructure.",
+    "We engineer custom GoHighLevel snapshots and multi-app automations that run your business on autopilot—at an agile, accessible rate.",
+  tagline: "High-efficiency GHL architecture and automated backend infrastructure.",
   availability: "Currently accepting select projects • Fast turnaround",
   email: "info@flowopz.com",
   // WhatsApp number in international format without + or spaces, e.g. "923001234567"
@@ -87,6 +87,16 @@ export const upwork = {
   ] as { quote: string; author: string; project: string; date: string; source?: string }[],
 };
 
+// Client testimonials from outside Upwork (shown after the Upwork reviews)
+export const testimonials: { quote: string; author: string; role: string }[] = [
+  { quote: "FlowOpz streamlined our entire client onboarding pipeline. Invoicing triggers, CRM pipeline changes, and automated follow-ups now run without a hitch. Incredible execution speed and reliability.", author: "David M.", role: "Operations Lead" },
+  { quote: "Our lead conversion increased by over 30% within four weeks.", author: "David Miller", role: "Founder" },
+  { quote: "The custom snapshot they built saved our agency dozens of hours per onboarding.", author: "Wen Zhang", role: "Operations Director" },
+  { quote: "Fast turnaround, high-converting design, and flawless event tracking.", author: "Marcus Vance", role: "Head of Growth" },
+  { quote: "They fixed a broken automation logic that had stalled us for weeks.", author: "Sarah Lindqvist", role: "Co-Founder" },
+  { quote: "Eliminated at least 10 hours of manual data entry from my week.", author: "Tariq Qureshi", role: "Principal Consultant" },
+];
+
 // Footer "Proof" column (Upwork, directory listings, reviews, etc.)
 export const proofLinks = [
   { label: "Upwork", href: upwork.url },
@@ -97,10 +107,10 @@ export const proofLinks = [
 
 export const home = {
   hero: {
-    eyebrow: "Web Development & Workflow Automation Specialists",
-    title: "Clean Websites. Flawless Automations.",
+    eyebrow: "GoHighLevel & Workflow Automation Specialists",
+    title: "Clean Systems. Flawless Automations.",
     dim: "Scaled Operations.",
-    text: "We engineer responsive websites, custom GoHighLevel snapshots, and multi-app automations that run your business on autopilot—at an agile, accessible rate.",
+    text: "We engineer custom GoHighLevel snapshots and multi-app automations that run your business on autopilot—at an agile, accessible rate.",
     pill: `${upwork.badge} on Upwork · ${upwork.jobSuccess} Job Success`,
     // Demo CRM dashboard shown in the hero card (illustrative numbers)
     card: {
@@ -127,13 +137,13 @@ export const home = {
 
   carousel: {
     heading: "Core service highlights",
-    giant: ["Clean websites.", "Flawless automations."],
+    giant: ["Flawless automations.", "Scaled operations."],
     // theme: purple | lime | teal | blue | chrome
     cards: [
-      { theme: "purple", left: "Web development", right: "HTML · WordPress", title: "Custom Web Development", text: "Fast, responsive websites engineered with clean HTML, CSS, JavaScript, WordPress, and Elementor.", href: "/services#web" },
-      { theme: "lime", left: "GoHighLevel", right: "Snapshots", title: "GoHighLevel (GHL) Setup", text: "Turnkey snapshots, sub-account architectures, custom fields, and branded client portals.", href: "/services#ghl" },
-      { theme: "teal", left: "Automation", right: "n8n · Make", title: "Workflow & Webhook Automations", text: "Cross-platform data pipelines built using n8n, Make, and native webhooks to eliminate data entry.", href: "/services#automation" },
-      { theme: "blue", left: "Email", right: "Klaviyo · CRM", title: "Email & Retention Systems", text: "Strategic drip sequences, list segmentation, and lifecycle automations across Klaviyo and CRM suites.", href: "/services#email" },
+      { theme: "purple", left: "GoHighLevel", right: "Snapshots", title: "GoHighLevel (GHL) Setup", text: "Turnkey snapshots, sub-account architectures, custom fields, and branded client portals.", href: "/services#ghl" },
+      { theme: "lime", left: "Automation", right: "n8n · Make", title: "Workflow & Webhook Automations", text: "Cross-platform data pipelines built using n8n, Make, and native webhooks to eliminate data entry.", href: "/services#automation" },
+      { theme: "teal", left: "Email", right: "Klaviyo · CRM", title: "Email & Retention Systems", text: "Strategic drip sequences, list segmentation, and lifecycle automations across Klaviyo and CRM suites.", href: "/services#email" },
+      { theme: "blue", left: "Speed-to-lead", right: "< 2 min", title: "True Speed-to-Lead", text: "Automated systems that respond to customer inquiries in seconds, eliminating missed sales opportunities.", href: "/services#automation" },
       { theme: "chrome", left: "Upwork", right: upwork.badge, title: `${upwork.badge}, ${upwork.jobSuccess} Job Success`, text: `${upwork.rating} rating from real Upwork clients.`, href: "/#reviews" },
     ],
   },
@@ -142,7 +152,7 @@ export const home = {
     heading: "Stop Losing Revenue to Fragmented Tools & Manual Tasks.",
     top: "Fragmented tools,",
     bottom: "one clean flow.",
-    copy: "You run marketing campaigns, but leads sit in unmonitored inboxes. Your team spends hours copying data between spreadsheets, your website loads slowly, and software subscriptions pile up without delivering ROI.",
+    copy: "You run marketing campaigns, but leads sit in unmonitored inboxes. Your team spends hours copying data between spreadsheets, and software subscriptions pile up without delivering ROI.",
     // Quick metrics bar
     stats: [
       { value: "$10/hr", label: "Flat, transparent base rate" },
@@ -162,14 +172,14 @@ export const home = {
       { art: "a3", left: "03   Documentation", right: "SOPs + video", title: "Comprehensive SOPs.", text: "Every project concludes with clean documentation and video walkthroughs so your team never feels stranded.", href: "/about" },
     ],
     endTitle: "The FlowOpz Fix.",
-    endText: "We tie your digital ecosystem together. From high-converting Elementor and WordPress builds to unified GoHighLevel CRMs and custom webhooks, we ensure every click turns into a tracked, nurtured lead.",
+    endText: "We tie your digital ecosystem together. From unified GoHighLevel CRMs to custom webhooks and n8n pipelines, we ensure every click turns into a tracked, nurtured lead.",
   },
 
   float: {
     title: "Proof, not promises.",
     sub: `${upwork.badge} on Upwork. ${upwork.jobSuccess} Job Success. ${upwork.rating} rating.`,
     // Labels shown on the floating tiles (in order)
-    tiles: ["Websites", `${upwork.badge} on Upwork`, "GHL Snapshots", "Webhooks", "n8n · Make", `${upwork.jobSuccess} Job Success`],
+    tiles: ["Workflows", `${upwork.badge} on Upwork`, "GHL Snapshots", "Webhooks", "n8n · Make", `${upwork.jobSuccess} Job Success`],
   },
 
   proof: {
@@ -183,7 +193,7 @@ export const home = {
     ],
     // Optional badge image placed in /public (e.g. "/badge.webp"). Empty = hidden.
     badge: { src: "", alt: "Certification badge", href: "#" },
-    reviewsTitle: "What clients say on Upwork",
+    reviewsTitle: "What clients say",
   },
 
   faqTitle: "Straight answers.",
@@ -191,7 +201,7 @@ export const home = {
   // Default closing banner (used on every page unless a page sets its own)
   final: {
     title: "Ready to automate your backend",
-    dim: "and upgrade your site?",
+    dim: "and scale your operations?",
     note: "Get dedicated technical support starting at $10/hour. Let’s build something durable.",
     primary: { label: "Get Started Today", href: "/contact" },
     secondary: { label: "View Our Offers & Rates", href: "/pricing" },
@@ -200,7 +210,7 @@ export const home = {
 
 export const faqs = [
   { q: "How much does it cost?", a: "Our flat base rate is $10/hour with transparent tracking and zero lock-in. Need more capacity? A Weekly Sprint is $200 for 20 hours, and Agency Dedicated is $400 for 40 hours. No hidden fees or bloated retainers." },
-  { q: "What can you build for me?", a: "Custom websites and landing pages (HTML, CSS, JavaScript, WordPress, Elementor), GoHighLevel snapshots and sub-accounts, n8n, Make and webhook automations, and email and retention systems in Klaviyo and GHL." },
+  { q: "What can you build for me?", a: "GoHighLevel snapshots, sub-accounts and client portals, n8n, Make and webhook automations, and email and retention systems in Klaviyo and GHL." },
   { q: "What happens when a project is finished?", a: "It belongs to you. Every project ends with clean documentation, step-by-step SOPs and video walkthroughs, so your team keeps full ownership and confidence." },
   { q: "Who will I be working with?", a: `You work directly with technical builders, led by ${upwork.name}, a ${upwork.badge} GoHighLevel and automation expert on Upwork with ${upwork.jobSuccess} Job Success. No account managers in between.` },
 ];
@@ -210,26 +220,13 @@ export const faqs = [
 export const services = {
   eyebrow: "End-to-End Solutions",
   title: "Technical Execution Across",
-  dim: "Web, CRM, and Automations.",
+  dim: "CRM, Integrations, and Automations.",
   text: "Pick a single targeted fix or hire us by the hour to build and maintain your entire tech stack.",
   // style: purple | dark
   offers: [
     {
-      id: "web",
-      kicker: "Service 01",
-      title: "Custom Web & Landing Page Development",
-      objective: "Fast, conversion-focused websites that represent your brand.",
-      points: [
-        "Custom WordPress / Elementor pages",
-        "Responsive HTML, CSS & JavaScript",
-        "Form integrations and conversion event tracking",
-        "Speed and cross-browser optimization",
-      ],
-      style: "purple",
-    },
-    {
       id: "ghl",
-      kicker: "Service 02",
+      kicker: "Service 01",
       title: "GoHighLevel (GHL) Architecture & Snapshots",
       objective: "Turn your CRM into an automated sales engine.",
       points: [
@@ -238,11 +235,11 @@ export const services = {
         "Multi-channel sequences (SMS, email, call whispers)",
         "Smart segmentation",
       ],
-      style: "dark",
+      style: "purple",
     },
     {
       id: "automation",
-      kicker: "Service 03",
+      kicker: "Service 02",
       title: "Advanced Integrations & Workflow Automation",
       objective: "Eliminate repetitive tasks with bulletproof automations.",
       points: [
@@ -255,7 +252,7 @@ export const services = {
     },
     {
       id: "email",
-      kicker: "Service 04",
+      kicker: "Service 03",
       title: "Email Marketing & Retention Campaigns",
       objective: "Keep your audience engaged and maximize lifetime value.",
       points: [
@@ -264,7 +261,7 @@ export const services = {
         "List hygiene and deliverability audits",
         "Conversion tracking",
       ],
-      style: "purple",
+      style: "dark",
     },
   ],
   processTitle: "How does a custom build work?",
@@ -282,7 +279,7 @@ export const pricing = {
   eyebrow: "Straightforward, Accessible Pricing",
   title: "Enterprise-Level Engineering.",
   dim: "Accessible Hourly Rates.",
-  text: "Hire dedicated technical expertise for web development, GHL setups, and automations at a flat $10/hour—no hidden fees or bloated retainers.",
+  text: "Hire dedicated technical expertise for GHL setups, integrations, and automations at a flat $10/hour—no hidden fees or bloated retainers.",
   plans: [
     {
       name: "Hourly On-Demand",
@@ -311,9 +308,9 @@ export const pricing = {
   ],
   estimatesTitle: "Output estimates at $10/hour",
   estimates: [
-    { hours: "2–4 hours", text: "CSS tweaks, single webhook connections, mobile layout fixes." },
-    { hours: "5–10 hours", text: "Multi-step automation workflow (n8n/GHL), lead nurture sequence, or custom landing page section." },
-    { hours: "15–25 hours", text: "Full custom landing page build or turnkey GHL sub-account setup with calendars and core pipelines." },
+    { hours: "2–4 hours", text: "Single webhook connections, workflow tweaks, and quick automation fixes." },
+    { hours: "5–10 hours", text: "Multi-step automation workflow (n8n/GHL) or lead nurture sequence." },
+    { hours: "15–25 hours", text: "Turnkey GHL sub-account setup with calendars and core pipelines." },
   ],
   faqTitle: "Questions?",
 };
@@ -324,23 +321,22 @@ export const about = {
   eyebrow: "Behind the Systems",
   title: "We Build the Technical Engines",
   dim: "That Power Modern Businesses.",
-  text: "FlowOpz was founded on a simple principle: high-performance websites and reliable automations should be efficient, accessible, and built right the first time.",
+  text: "FlowOpz was founded on a simple principle: high-performance systems and reliable automations should be efficient, accessible, and built right the first time.",
   philosophyKicker: "Our philosophy",
   philosophyTitle: "No Bloat. No Black Boxes. Just Working Systems.",
   prose: [
-    "Most businesses don't need another expensive, disconnected SaaS tool. They need their existing platforms to communicate, their websites to convert, and their operational bottlenecks removed.",
-    "At FlowOpz, we operate at the intersection of clean frontend design and robust backend engineering. Whether we are styling custom CSS for a client portal, wiring multi-step webhook triggers, or configuring a comprehensive CRM snapshot, we focus on durability, performance, and clear documentation.",
+    "Most businesses don't need another expensive, disconnected SaaS tool. They need their existing platforms to communicate and their operational bottlenecks removed.",
+    "At FlowOpz, we operate at the intersection of clean CRM architecture and robust backend engineering. Whether we are styling custom CSS for a client portal, wiring multi-step webhook triggers, or configuring a comprehensive CRM snapshot, we focus on durability, performance, and clear documentation.",
   ],
   valuesTitle: "Core values",
   values: [
-    { title: "Clean Code & Lean Architecture", text: "We don't believe in duct-taped solutions. We build maintainable workflows and clean web layouts designed to scale as your traffic grows." },
+    { title: "Clean Code & Lean Architecture", text: "We don't believe in duct-taped solutions. We build maintainable workflows and lean systems designed to scale as your business grows." },
     { title: "True Speed-to-Lead", text: "We design automated systems that respond to customer inquiries in seconds, eliminating missed sales opportunities." },
     { title: "Complete Transparency", text: "No hidden setup fees, surprise retainers, or vague project estimates. Our hourly rates and deliverables are open and straightforward." },
     { title: "Empowerment Through Documentation", text: "When we finish a project, it belongs to you. We provide step-by-step SOPs so your team maintains full ownership and confidence." },
   ],
   toolkitTitle: "The FlowOpz toolkit",
   toolkit: [
-    { category: "CMS & Web", tools: "WordPress, Elementor, Custom HTML5/CSS3, JavaScript" },
     { category: "CRM & Platforms", tools: "GoHighLevel (GHL), Sub-Account Snapshots, Client Portals" },
     { category: "Integration & Logic", tools: "n8n, Webhooks, REST APIs, Zapier, Make" },
     { category: "Lifecycle Marketing", tools: "Klaviyo, GHL Automations, Custom Email Templates" },
@@ -364,7 +360,7 @@ export const contact = {
   eyebrow: "Get In Touch",
   title: "Let’s Talk Systems,",
   dim: "Automations, & Growth.",
-  text: "Have a project in mind, need an automation audit, or ready to kick off an hourly sprint? Send us a message and we will respond within 24 business hours.",
+  text: "Have a project in mind, need an automation audit, or ready to kick off an hourly sprint? Send us a message and we will respond within 1 hour.",
   details: [
     { label: "Email", value: "info@flowopz.com" },
     { label: "Hours", value: "Monday – Friday (Global coverage)" },
@@ -373,7 +369,6 @@ export const contact = {
   ],
   formTitle: "Tell us about your project",
   serviceOptions: [
-    "Custom Web & Landing Page Development",
     "GoHighLevel (GHL) Architecture & Snapshots",
     "Advanced Integrations & Workflow Automation",
     "Email Marketing & Retention Campaigns",

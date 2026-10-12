@@ -17,10 +17,10 @@ import { site, services } from "../data/site";
 
   <section class="light" data-nav="light">
     <div class="wrap">
-      <div class="offer">
+      <div class="offer plans">
         {
           services.offers.map((o, i) => (
-            <div class={`big-card svc rv ${o.style}`} id={o.id} style={`--d:${(i % 2) * 0.1}s`}>
+            <div class={`big-card svc rv ${o.style}`} id={o.id} style={`--d:${i * 0.1}s`}>
               <div>
                 <p class="mono">{o.kicker}</p>
                 <h2>{o.title}</h2>

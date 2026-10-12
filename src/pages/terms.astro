@@ -1,0 +1,65 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import { site } from "../data/site";
+
+const updated = "October 12, 2026";
+---
+
+<Layout title={`Terms of Service | ${site.name}`} description={`The terms that apply when you use the ${site.name} website or hire us.`}>
+  <PageHero eyebrow="Legal" title="Terms of" dim="Service.">
+    <p>Last updated: {updated}</p>
+  </PageHero>
+
+  <section class="light" data-nav="light">
+    <div class="wrap legal">
+      <p>These Terms of Service (“Terms”) apply when you use the {site.name} website or hire {site.name} (“we”, “us”, “our”) for GoHighLevel, integration and workflow automation services. By using our website or services, you agree to these Terms.</p>
+
+      <h2>1. Our services</h2>
+      <p>We provide GoHighLevel (GHL) setup and architecture, workflow and webhook automations, integrations, and email and retention systems. The scope of each engagement (tasks, deliverables and timeline) is agreed with you in writing, by email or message, before work begins.</p>
+
+      <h2>2. Rates and billing</h2>
+      <ul>
+        <li><b>Hourly On-Demand:</b> $10 USD per hour, tracked transparently.</li>
+        <li><b>Weekly Sprint:</b> $200 USD per week for 20 hours.</li>
+        <li><b>Agency Dedicated:</b> $400 USD per week for 40 hours.</li>
+      </ul>
+      <p>Invoices are payable on the terms agreed for your project. Prices on our website may change, but changes never apply to work already agreed. Work contracted through a marketplace such as Upwork is billed and paid through that platform.</p>
+
+      <h2>3. Your responsibilities</h2>
+      <ul>
+        <li>Provide the access, information and approvals we need, on time.</li>
+        <li>Make sure the information and content you give us is accurate and that you have the right to use it.</li>
+        <li>Pay for your own third-party subscriptions and usage (for example GoHighLevel, n8n, Make, Zapier, Klaviyo, SMS and email sending).</li>
+        <li>Use the systems we build in line with applicable laws, including anti-spam and data protection rules.</li>
+      </ul>
+
+      <h2>4. Third-party platforms</h2>
+      <p>Our work runs on third-party platforms that we do not control. We are not responsible for their outages, pricing, policy or feature changes, or for any resulting effect on your systems, though we will help you adapt where we can.</p>
+
+      <h2>5. Ownership</h2>
+      <p>Once paid for in full, the workflows, snapshots, configurations and documentation we create for you belong to you. We keep the right to reuse our general know-how, methods and pre-existing tools, and to describe the type of work we did for you in our portfolio without sharing confidential details, unless you ask us not to.</p>
+
+      <h2>6. Confidentiality</h2>
+      <p>We keep your business information, credentials and customer data confidential, and use them only to deliver the agreed work. Please share access credentials through secure methods, and revoke access we no longer need when a project ends.</p>
+
+      <h2>7. Warranties</h2>
+      <p>We deliver our services with reasonable skill and care. Beyond that, our services are provided “as is”, and we do not guarantee specific business results such as lead volume, conversion rates or revenue.</p>
+
+      <h2>8. Limitation of liability</h2>
+      <p>To the fullest extent permitted by law, we are not liable for indirect, incidental or consequential losses, including lost profits or data. Our total liability for any claim is limited to the amount you paid us for the specific service that gave rise to the claim.</p>
+
+      <h2>9. Ending an engagement</h2>
+      <p>Either party may end an engagement with written notice. You will pay for the hours worked and work completed up to that date, and we will hand over the work and documentation completed so far.</p>
+
+      <h2>10. Changes to these Terms</h2>
+      <p>We may update these Terms from time to time. The “Last updated” date above shows when they were last changed. Changes do not affect work already agreed.</p>
+
+      <h2>11. Governing law</h2>
+      <p>These Terms are governed by the laws of the jurisdiction in which {site.name} operates, unless a written agreement for your project states otherwise.</p>
+
+      <h2>12. Contact</h2>
+      <p>Questions about these Terms? Email us at <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+    </div>
+  </section>
+</Layout>

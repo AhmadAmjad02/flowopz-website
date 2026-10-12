@@ -1,7 +1,7 @@
 ---
 // Upwork summary + client review cards.
 import Btn from "./Btn.astro";
-import { upwork } from "../data/site";
+import { upwork, testimonials } from "../data/site";
 
 interface Props {
   title?: string;
@@ -43,6 +43,18 @@ const stars = [0, 1, 2, 3, 4];
           <b>{r.author}</b>
           <span>{r.project}</span>
           <span class="mono">{r.source ?? "Upwork"} · {r.date}</span>
+        </figcaption>
+      </figure>
+    ))
+  }
+  {
+    testimonials.map((t, i) => (
+      <figure class="review rv" style={`--d:${(i % 2) * 0.08}s`}>
+        <blockquote>&ldquo;{t.quote}&rdquo;</blockquote>
+        <figcaption>
+          <b>{t.author}</b>
+          <span>{t.role}</span>
+          <span class="mono">Client testimonial</span>
         </figcaption>
       </figure>
     ))
