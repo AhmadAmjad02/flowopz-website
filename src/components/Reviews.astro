@@ -19,7 +19,7 @@ const stars = [0, 1, 2, 3, 4];
     <div class="up-score">
       <b>{upwork.rating}</b>
       <div>
-        <div class="stars" aria-label={`Rated ${upwork.rating} out of 5`}>
+        <div class="stars" role="img" aria-label={`Rated ${upwork.rating} out of 5`}>
           {stars.map(() => <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z"></path></svg>)}
         </div>
         <span>{upwork.ratingCount} ratings on Upwork</span>
@@ -35,7 +35,7 @@ const stars = [0, 1, 2, 3, 4];
   {
     upwork.reviews.map((r, i) => (
       <figure class="review rv" style={`--d:${(i % 2) * 0.08}s`}>
-        <div class="stars" aria-label="Rated 5 out of 5">
+        <div class="stars" role="img" aria-label="Rated 5 out of 5">
           {stars.map(() => <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z"></path></svg>)}
         </div>
         <blockquote>&ldquo;{r.quote}&rdquo;</blockquote>
@@ -50,6 +50,9 @@ const stars = [0, 1, 2, 3, 4];
   {
     testimonials.map((t, i) => (
       <figure class="review rv" style={`--d:${(i % 2) * 0.08}s`}>
+        <div class="stars" role="img" aria-label="Rated 5 out of 5">
+          {stars.map(() => <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z"></path></svg>)}
+        </div>
         <blockquote>&ldquo;{t.quote}&rdquo;</blockquote>
         <figcaption>
           <b>{t.author}</b>

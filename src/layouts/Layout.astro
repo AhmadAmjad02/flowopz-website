@@ -1,18 +1,61 @@
 ---
+import "@fontsource-variable/inter-tight";
+import "@fontsource-variable/geist-mono";
+import interTight from "@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2?url";
+import geistMono from "@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2?url";
 import "../styles/global.css";
 import Nav from "../components/Nav.astro";
 import FinalCta, { type FinalContent } from "../components/FinalCta.astro";
 import Footer from "../components/Footer.astro";
-import { site } from "../data/site";
+import { site, upwork, services, faqs } from "../data/site";
 
 interface Props {
   title?: string;
   description?: string;
   // Page-specific closing banner; defaults to home.final
   final?: FinalContent;
+  // Adds FAQPage structured data (pages that show the FAQ)
+  faq?: boolean;
 }
 
-const { title = site.title, description = site.description, final } = Astro.props;
+const { title = site.title, description = site.description, final, faq = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const ogImage = new URL("/og.png", site.url).href;
+
+// Structured data: the business, its GoHighLevel/automation services, and (optionally) the FAQ
+const graph: Record<string, unknown>[] = [
+  {
+    "@type": "ProfessionalService",
+    "@id": `${site.url}/#org`,
+    name: site.name,
+    url: site.url,
+    image: ogImage,
+    logo: new URL("/brand/flowopz-icon.svg", site.url).href,
+    email: site.email,
+    description: site.description,
+    priceRange: "$10/hr",
+    areaServed: "Worldwide",
+    knowsAbout: site.keywords,
+    sameAs: [upwork.url, ...site.socials.map((s) => s.href)],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "GoHighLevel & workflow automation services",
+      itemListElement: services.offers.map((o) => ({
+        "@type": "Offer",
+        priceSpecification: { "@type": "UnitPriceSpecification", price: "10", priceCurrency: "USD", unitText: "HOUR" },
+        itemOffered: { "@type": "Service", name: o.title, description: o.objective },
+      })),
+    },
+  },
+  { "@type": "WebSite", "@id": `${site.url}/#site`, url: site.url, name: site.name, publisher: { "@id": `${site.url}/#org` } },
+];
+if (faq) {
+  graph.push({
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  });
+}
+const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": graph });
 ---
 
 <!doctype html>
@@ -22,19 +65,31 @@ const { title = site.title, description = site.description, final } = Astro.prop
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="theme-color" content="#1C1C20" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preload" href={interTight} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={geistMono} as="font" type="font/woff2" crossorigin />
     <script is:inline>document.documentElement.className = "js";</script>
+    <script type="application/ld+json" set:html={jsonLd} />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>

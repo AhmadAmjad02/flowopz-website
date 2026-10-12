@@ -8,9 +8,9 @@
   --v3: #3A3A40;
   --v4: #A1A1AA;
   --v5: #F2F2F4;
-  --muted: #71717A;
-  --sans: "Inter Tight", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --muted: #66666E;
+  --sans: "Inter Tight Variable", "Inter Tight", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "Geist Mono Variable", "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --ease: cubic-bezier(.22, .9, .2, 1);
   --pad: clamp(20px, 4vw, 56px);
   --cw: clamp(230px, 23vw, 340px);
@@ -111,6 +111,12 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -.045em; line-height: .98; }
 .js .hero-wrap.free { height: auto; }
 .js .hero-wrap.free .hero.stick { position: relative; top: auto; }
 .js .hero-wrap.free + .carousel { margin-top: -30px; }
+/* Phones/tablets: the hero never pins, so lay it out that way from the first paint (avoids layout shift) */
+@media (max-width: 900px) {
+  .js .hero-wrap { height: auto; }
+  .js .hero.stick { position: relative; top: auto; }
+  .js .hero-wrap + .carousel { margin-top: -30px; }
+}
 .hero-in {
   position: relative; min-height: calc(100svh - 20px);
   display: grid; grid-template-columns: 1.1fr .9fr; grid-template-rows: auto 1fr;

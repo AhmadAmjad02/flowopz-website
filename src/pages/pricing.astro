@@ -7,7 +7,7 @@ import Faq from "../components/Faq.astro";
 import { site, pricing } from "../data/site";
 ---
 
-<Layout title={`Pricing & Offers | ${site.name}`}>
+<Layout faq title={`GoHighLevel Expert from $10/hr: Pricing & Offers | ${site.name}`} description="Hire a GoHighLevel expert from $10/hour. Hourly on-demand GHL support, 20-hour weekly sprints, or a dedicated 40-hour week for agencies. No hidden fees or retainers.">
   <PageHero eyebrow={pricing.eyebrow} title={pricing.title} dim={pricing.dim}>
     <p>{pricing.text}</p>
     <Btn href={site.cta.href} variant="w">{site.cta.label}</Btn>

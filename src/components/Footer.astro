@@ -7,6 +7,7 @@ const contactLinks = [
   site.whatsapp && { label: site.whatsappLabel, href: `https://wa.me/${site.whatsapp}` },
   { label: "Email", href: `mailto:${site.email}` },
   site.calendlyUrl && { label: "Calendly", href: site.calendlyUrl },
+  ...site.socials,
 ].filter(Boolean) as { label: string; href: string }[];
 
 const ext = (href: string) => (/^https?:/.test(href) ? { target: "_blank", rel: "noopener" } : {});

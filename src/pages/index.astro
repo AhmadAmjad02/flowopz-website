@@ -28,7 +28,7 @@ const tiles = [
 const ext = (href: string) => (/^https?:/.test(href) ? { target: "_blank", rel: "noopener" } : {});
 ---
 
-<Layout>
+<Layout faq>
   <!-- Hero (sticky, shrinks as the offers sheet slides over) -->
   <div class="hero-wrap">
     <section class="hero stick" data-nav="dark">
@@ -49,7 +49,7 @@ const ext = (href: string) => (/^https?:/.test(href) ? { target: "_blank", rel: 
               {upwork.reviews.map((r) => <i>{r.author.charAt(0)}</i>)}
             </span>
             <span class="trust-txt">
-              <span class="stars" aria-label={`Rated ${upwork.rating} out of 5`}>
+              <span class="stars" role="img" aria-label={`Rated ${upwork.rating} out of 5`}>
                 {[0, 1, 2, 3, 4].map(() => <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z"></path></svg>)}
                 <b>{upwork.rating}</b>
               </span>

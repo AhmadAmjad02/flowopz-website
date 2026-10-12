@@ -1,14 +1,33 @@
 // All site copy lives here. Update text, prices and links in this file.
-// Copy follows the "FlowOpz — Complete Website Copy Deck".
+// Copy follows the "FlowOpz Complete Website Copy Deck".
 
 export const site = {
   name: "FlowOpz",
-  title: "FlowOpz | GoHighLevel & Workflow Automation",
+  // Live domain: used for canonical URLs, sitemap and social previews
+  url: "https://flowopz.com",
+  title: "GoHighLevel Expert & GHL Automation Agency | FlowOpz",
   description:
-    "We engineer custom GoHighLevel snapshots and multi-app automations that run your business on autopilot—at an agile, accessible rate.",
+    "GoHighLevel (GHL) setup, snapshots, sub-accounts and workflow automation from $10/hr. FlowOpz builds GHL CRMs, n8n and Make integrations and speed-to-lead systems for agencies and businesses.",
+  keywords: [
+    "GoHighLevel",
+    "GHL automation",
+    "GoHighLevel snapshots",
+    "GHL sub-account setup",
+    "GoHighLevel workflows",
+    "HighLevel CRM",
+    "n8n",
+    "Make",
+    "Zapier",
+    "Webhooks",
+    "Klaviyo",
+  ],
   tagline: "High-efficiency GHL architecture and automated backend infrastructure.",
   availability: "Currently accepting select projects • Fast turnaround",
   email: "info@flowopz.com",
+  socials: [
+    { label: "Instagram", href: "https://www.instagram.com/automations.flowopz/" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/112716790/" },
+  ],
   // WhatsApp number in international format without + or spaces, e.g. "923001234567"
   whatsapp: "",
   whatsappLabel: "WhatsApp",
@@ -110,7 +129,7 @@ export const home = {
     eyebrow: "GoHighLevel & Workflow Automation Specialists",
     title: "Clean Systems. Flawless Automations.",
     dim: "Scaled Operations.",
-    text: "We engineer custom GoHighLevel snapshots and multi-app automations that run your business on autopilot—at an agile, accessible rate.",
+    text: "We engineer custom GoHighLevel snapshots and multi-app automations that run your business on autopilot, at an agile, accessible rate.",
     pill: `${upwork.badge} on Upwork · ${upwork.jobSuccess} Job Success`,
     // Demo CRM dashboard shown in the hero card (illustrative numbers)
     card: {
@@ -167,7 +186,7 @@ export const home = {
     heading: "Why choose FlowOpz",
     // art: a1 | a2 | a3
     steps: [
-      { art: "a1", left: "01   Developer-led", right: "Direct access", title: "Developer-Led Precision.", text: "You work directly with technical builders who understand code, databases, and APIs—not account managers who overpromise.", href: "/about" },
+      { art: "a1", left: "01   Developer-led", right: "Direct access", title: "Developer-Led Precision.", text: "You work directly with technical builders who understand code, databases, and APIs, not account managers who overpromise.", href: "/about" },
       { art: "a2", left: "02   Cost efficiency", right: "From $10/hr", title: "Radical Cost Efficiency.", text: "Enterprise-level workflows and custom builds starting at just $10/hour, giving agencies and founders high-margin leverage.", href: "/pricing" },
       { art: "a3", left: "03   Documentation", right: "SOPs + video", title: "Comprehensive SOPs.", text: "Every project concludes with clean documentation and video walkthroughs so your team never feels stranded.", href: "/about" },
     ],
@@ -187,7 +206,7 @@ export const home = {
     title: "Built by developers who ship working systems.",
     creds: [
       { title: `${upwork.badge} on Upwork`, tag: "Verified", text: `${upwork.jobSuccess} Job Success and a ${upwork.rating} client rating.` },
-      // Hidden for now — uncomment to show again
+      // Hidden for now: uncomment to show again
       // { title: `${upwork.totalJobs} jobs, ${upwork.totalHours} hours`, tag: "Track record", text: `${upwork.experience} helping businesses with GoHighLevel, n8n and Zapier automation.` },
       { title: "Fully documented handoffs", tag: "Approach", text: "Clean SOPs and video walkthroughs on every project." },
     ],
@@ -210,7 +229,7 @@ export const home = {
 
 export const faqs = [
   { q: "How much does it cost?", a: "Our flat base rate is $10/hour with transparent tracking and zero lock-in. Need more capacity? A Weekly Sprint is $200 for 20 hours, and Agency Dedicated is $400 for 40 hours. No hidden fees or bloated retainers." },
-  { q: "What can you build for me?", a: "GoHighLevel snapshots, sub-accounts and client portals, n8n, Make and webhook automations, and email and retention systems in Klaviyo and GHL." },
+  { q: "What GoHighLevel and automation work do you do?", a: "GoHighLevel (GHL) setup, snapshots, sub-accounts and client portals, n8n, Make and webhook automations, and email and retention systems in Klaviyo and GHL." },
   { q: "What happens when a project is finished?", a: "It belongs to you. Every project ends with clean documentation, step-by-step SOPs and video walkthroughs, so your team keeps full ownership and confidence." },
   { q: "Who will I be working with?", a: `You work directly with technical builders, led by ${upwork.name}, a ${upwork.badge} GoHighLevel and automation expert on Upwork with ${upwork.jobSuccess} Job Success. No account managers in between.` },
 ];
@@ -279,7 +298,7 @@ export const pricing = {
   eyebrow: "Straightforward, Accessible Pricing",
   title: "Enterprise-Level Engineering.",
   dim: "Accessible Hourly Rates.",
-  text: "Hire dedicated technical expertise for GHL setups, integrations, and automations at a flat $10/hour—no hidden fees or bloated retainers.",
+  text: "Hire dedicated technical expertise for GHL setups, integrations, and automations at a flat $10/hour. No hidden fees or bloated retainers.",
   plans: [
     {
       name: "Hourly On-Demand",
