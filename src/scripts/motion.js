@@ -66,34 +66,6 @@ if (form) {
   });
 }
 
-/* ---------- Calendly embed: lazy-load, auto-height ---------- */
-const calendars = $$("iframe[data-calendly]");
-if (calendars.length) {
-  const load = (fr) => {
-    if (fr.src) return;
-    fr.src = fr.dataset.calendly + "&embed_domain=" + encodeURIComponent(location.hostname);
-  };
-  if ("IntersectionObserver" in window) {
-    const co = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            load(e.target);
-            co.unobserve(e.target);
-          }
-        });
-      },
-      { rootMargin: "120px" }
-    );
-    calendars.forEach((fr) => co.observe(fr));
-  } else calendars.forEach(load);
-  addEventListener("message", (e) => {
-    if (e.origin !== "https://calendly.com" || !e.data || e.data.event !== "calendly.page_height") return;
-    const h = parseInt(e.data.payload.height, 10);
-    if (h) calendars.forEach((fr) => { if (fr.contentWindow === e.source) fr.style.height = h + "px"; });
-  });
-}
-
 if (!reduced) initScenes();
 
 function initScenes() {

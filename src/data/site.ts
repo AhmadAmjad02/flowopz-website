@@ -31,14 +31,13 @@ export const site = {
   // WhatsApp number in international format without + or spaces, e.g. "923001234567"
   whatsapp: "",
   whatsappLabel: "WhatsApp",
-  // Calendly (or GHL calendar) link. Used for the contact page embed and footer link.
-  calendlyUrl: "",
   // Optional webhook (e.g. GoHighLevel inbound webhook) for the contact form. Empty = opens email app.
   formWebhook: "",
   location: "Monday – Friday · Global coverage",
   rate: "$10/hr",
   // Main call to action used across the site
-  cta: { label: "Book a Free Consultation", href: "/contact" },
+  // Every booking button links to the Cal.com page
+  cta: { label: "Book a Free Consultation", href: "/book" },
   offersCta: { label: "View Our Offers & Rates", href: "/pricing" },
 };
 
@@ -222,7 +221,7 @@ export const home = {
     title: "Ready to automate your backend",
     dim: "and scale your operations?",
     note: "Get dedicated technical support starting at $10/hour. Let’s build something durable.",
-    primary: { label: "Get Started Today", href: "/contact" },
+    primary: { label: "Get Started Today", href: "/book" },
     secondary: { label: "View Our Offers & Rates", href: "/pricing" },
   },
 };
@@ -368,9 +367,20 @@ export const about = {
     title: "Let’s collaborate on your next build",
     dim: "or technical overhaul.",
     note: "Get dedicated technical support starting at $10/hour.",
-    primary: { label: "Contact FlowOpz", href: "/contact" },
+    primary: { label: "Contact FlowOpz", href: "/book" },
     secondary: { label: "View Our Offers & Rates", href: "/pricing" },
   },
+};
+
+/* ---------------- Book (Cal.com) ---------------- */
+
+export const book = {
+  eyebrow: "Free Consultation",
+  title: "Book a Free",
+  dim: "Consultation.",
+  text: "Pick a time that suits you to talk through your GoHighLevel setup, automations or integrations. No pressure, just a clear next step.",
+  button: "Choose a time",
+  description: "Book a free consultation with a GoHighLevel and automation expert. Pick a time for a call about your GHL setup, snapshots, integrations or workflow automations.",
 };
 
 /* ---------------- Contact ---------------- */

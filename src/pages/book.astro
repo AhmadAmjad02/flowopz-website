@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import Btn from "../components/Btn.astro";
+import CalEmbed from "../components/CalEmbed.astro";
+import { site, book } from "../data/site";
+---
+
+<Layout title={`Book a Free GoHighLevel Consultation | ${site.name}`} description={book.description}>
+  <PageHero eyebrow={book.eyebrow} title={book.title} dim={book.dim}>
+    <p>{book.text}</p>
+    <Btn href="#calendar" variant="w">{book.button}</Btn>
+  </PageHero>
+
+  <section class="light" data-nav="light" id="calendar" style="padding-top:clamp(40px,6vw,80px)">
+    <div class="wrap">
+      <CalEmbed />
+    </div>
+  </section>
+</Layout>

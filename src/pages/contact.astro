@@ -3,11 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
 import Btn from "../components/Btn.astro";
 import Arrow from "../components/Arrow.astro";
+import CalEmbed from "../components/CalEmbed.astro";
 import { site, contact } from "../data/site";
-
-const calendly = site.calendlyUrl
-  ? `${site.calendlyUrl}${site.calendlyUrl.includes("?") ? "&" : "?"}hide_gdpr_banner=1&primary_color=1c1c20&embed_type=Inline`
-  : "";
 ---
 
 <Layout title={`Hire a GoHighLevel Expert | Contact ${site.name}`} description="Talk to a GoHighLevel and automation expert about your GHL setup, snapshot, integration or automation audit. We respond within 1 hour.">
@@ -25,15 +22,7 @@ const calendly = site.calendlyUrl
   <section class="light" data-nav="light" style="padding-top:clamp(40px,6vw,80px)">
     <div class="wrap">
       <div class="cgrid">
-        <div class="embed">
-          {
-            calendly ? (
-              <iframe data-calendly={calendly} title="Book a free consultation" scrolling="no" width="100%" height="900"></iframe>
-            ) : (
-              <p class="empty">Booking calendar coming soon. Add your Calendly link in <code>src/data/site.ts</code>.</p>
-            )
-          }
-        </div>
+        <CalEmbed />
         <form id="lead" data-webhook={site.formWebhook} data-email={site.email} novalidate>
           <h2>{contact.formTitle}</h2>
           <label>Full Name<input name="name" autocomplete="name" required /></label>

@@ -646,3 +646,7 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 .legal b { color: var(--ink); font-weight: 600; }
 .legal a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 .foot .legal-links { display: inline-flex; gap: 18px; }
+
+/* Cal.com booking calendar */
+.cal-embed { border-radius: 26px; overflow: hidden; background: #fff; min-height: 600px; padding: 8px; box-shadow: inset 0 0 0 1px rgba(7, 6, 11, .06); }
+.cal-embed > div { min-height: 584px; }
