@@ -22,7 +22,7 @@ const VERT = "attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}";
 
 const FRAG = `
 precision highp float;
-uniform vec2 R; uniform float T; uniform vec2 M;
+uniform vec2 R; uniform float T; uniform vec2 M; uniform vec3 K;
 mat2 rot(float a){float s=sin(a),c=cos(a);return mat2(c,-s,s,c);}
 float map(vec3 p){
   p.yz*=rot(.35+M.y*.35); p.xz*=rot(sin(T*.35)*.55+M.x*.6); p.xy*=rot(T*.12);
@@ -37,13 +37,13 @@ float map(vec3 p){
 vec3 nor(vec3 p){vec2 e=vec2(.004,0.);return normalize(vec3(map(p+e.xyy)-map(p-e.xyy),map(p+e.yxy)-map(p-e.yxy),map(p+e.yyx)-map(p-e.yyx)));}
 vec3 env(vec3 r){
   float y=r.y*.5+.5;
-  vec3 c=mix(vec3(.03,.03,.035),vec3(.78,.78,.84),smoothstep(.0,1.,y));
+  vec3 c=mix(vec3(.03,.03,.035)+max(K-1.,0.)*.35,vec3(.78,.78,.84),smoothstep(.0,1.,y));
   c+=vec3(1.)*smoothstep(.45,.95,r.y)*1.9;
   c+=vec3(1.,.95,1.)*pow(max(dot(r,normalize(vec3(.7,.35,.6))),0.),10.)*2.6;
   c+=vec3(.66,.66,.72)*pow(max(dot(r,normalize(vec3(-.8,-.1,.5))),0.),8.)*1.6;
   c+=vec3(.9)*smoothstep(.12,.0,abs(r.x*.8+r.y*.5-.15))*.9;
   c*=.5+.5*smoothstep(-.3,.3,sin(r.y*6.+r.x*3.));
-  return c;
+  return c*K;
 }
 void main(){
   vec2 uv=(gl_FragCoord.xy*2.-R)/min(R.x,R.y);
@@ -83,6 +83,9 @@ function init() {
   gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
 
   const uR = gl.getUniformLocation(prog, "R"), uT = gl.getUniformLocation(prog, "T"), uM = gl.getUniformLocation(prog, "M");
+  // Colour tint from the theme (CSS --star-tint: "r, g, b"), default neutral chrome
+  const tint = (getComputedStyle(document.documentElement).getPropertyValue("--star-tint") || "1, 1, 1").split(",").map(Number);
+  gl.uniform3f(gl.getUniformLocation(prog, "K"), ...(tint.length === 3 && tint.every((n) => !isNaN(n)) ? tint : [1, 1, 1]));
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let on = false, raf = 0, mx = 0, my = 0, tx = 0, ty = 0;
 
