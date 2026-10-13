@@ -4,39 +4,53 @@ import { site, nav, proofLinks } from "../data/site";
 
 const year = new Date().getFullYear();
 const contactLinks = [
+  { label: site.email, href: `mailto:${site.email}` },
   site.whatsapp && { label: site.whatsappLabel, href: `https://wa.me/${site.whatsapp}` },
-  { label: "Email", href: `mailto:${site.email}` },
   { label: "Book a call", href: site.cta.href },
-  ...site.socials,
 ].filter(Boolean) as { label: string; href: string }[];
+
+// Simple stroke icons for the social buttons
+const icons: Record<string, string> = {
+  Instagram:
+    '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>',
+  LinkedIn:
+    '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>',
+};
 
 const ext = (href: string) => (/^https?:/.test(href) ? { target: "_blank", rel: "noopener" } : {});
 ---
 
 <footer class="foot" data-nav="light">
   <div class="wrap">
-    <div class="grid">
-      <div>
-        <Logo class="big" />
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="/" aria-label={`${site.name} home`} class="foot-logo"><Logo class="big" /></a>
         <p class="tag">{site.tagline}</p>
         <p class="avail"><span class="dot"></span>{site.availability}</p>
+        <div class="socials">
+          {
+            site.socials.map((s) => (
+              <a href={s.href} {...ext(s.href)} aria-label={s.label} title={s.label}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[s.label] ?? ""}></svg>
+              </a>
+            ))
+          }
+        </div>
       </div>
-      <div class="cols">
-        <div>
-          <p class="fh">Pages</p>
-          <ul>
-            <li><a href="/">Home</a></li>
-            {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
-          </ul>
-        </div>
-        <div>
-          <p class="fh">Proof</p>
-          <ul>{proofLinks.map((l) => <li><a href={l.href} {...ext(l.href)}>{l.label}</a></li>)}</ul>
-        </div>
-        <div>
-          <p class="fh">Contact</p>
-          <ul>{contactLinks.map((l) => <li><a href={l.href} {...ext(l.href)}>{l.label}</a></li>)}</ul>
-        </div>
+      <nav class="foot-col" aria-label="Pages">
+        <p class="fh">Pages</p>
+        <ul>
+          <li><a href="/">Home</a></li>
+          {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+        </ul>
+      </nav>
+      <div class="foot-col">
+        <p class="fh">Proof</p>
+        <ul>{proofLinks.map((l) => <li><a href={l.href} {...ext(l.href)}>{l.label}</a></li>)}</ul>
+      </div>
+      <div class="foot-col">
+        <p class="fh">Contact</p>
+        <ul>{contactLinks.map((l) => <li><a href={l.href} {...ext(l.href)}>{l.label}</a></li>)}</ul>
       </div>
     </div>
     <div class="fine">
