@@ -927,3 +927,22 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 .logo-svg .dot, .mark-svg .dot { fill: var(--logo-ring, currentColor); }
 .chip { --logo-ring: currentColor; }
 [data-theme="light"][data-scheme="bo"] { --logo-ring: #2563EB; }
+
+/* Ocean Blue footer: deep-navy rounded panel */
+[data-scheme="bo"][data-theme="light"] .foot {
+  margin: 10px; border-radius: 30px; color: #E6EEFF;
+  background:
+    radial-gradient(55% 70% at 90% 0%, rgba(59, 130, 246, .35), transparent 65%),
+    radial-gradient(45% 60% at 0% 100%, rgba(37, 99, 235, .25), transparent 70%),
+    linear-gradient(160deg, #172554 0%, #0F1E46 50%, #0B1B3F 100%);
+}
+[data-scheme="bo"][data-theme="light"] .foot .big { color: #FFFFFF; --logo-ring: #FFFFFF; }
+[data-scheme="bo"][data-theme="light"] .foot .big .node { stroke: none; }
+[data-scheme="bo"][data-theme="light"] .foot .tag { color: #BFD3F5; }
+[data-scheme="bo"][data-theme="light"] .foot .avail { background: rgba(255, 255, 255, .08); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16); color: #FFFFFF; }
+[data-scheme="bo"][data-theme="light"] .foot .avail .dot { background: #60A5FA; box-shadow: 0 0 0 3px rgba(96, 165, 250, .3); }
+[data-scheme="bo"][data-theme="light"] .foot .fh { color: #93C5FD; }
+[data-scheme="bo"][data-theme="light"] .foot li a { color: #DBE7FF; }
+[data-scheme="bo"][data-theme="light"] .foot a:hover { color: #FFFFFF; }
+[data-scheme="bo"][data-theme="light"] .foot .fine { border-top-color: rgba(255, 255, 255, .14); color: #9DB6E3; }
+[data-scheme="bo"][data-theme="light"] .foot .fine a { color: #BFD3F5; }
