@@ -86,8 +86,9 @@ function initScenes() {
   /* ---------- Scenes ---------- */
   let vw = innerWidth, vh = innerHeight;
   const scenes = [];
-  const scene = (el, fn, meas) => {
-    const o = { el, fn, meas, p: 0, top: 0, range: 1 };
+  // follow: how quickly a scene catches up with the scroll position (per 60fps frame)
+  const scene = (el, fn, meas, follow = 0.14) => {
+    const o = { el, fn, meas, follow, p: 0, top: 0, range: 1 };
     scenes.push(o);
     return o;
   };
@@ -136,8 +137,9 @@ function initScenes() {
   const bey = $("[data-pin=beyond]");
   if (bey) {
     const top = $(".b-top", bey), bot = $(".b-bot", bey), copy = $(".b-copy", bey), star = $(".b-star", bey), stats = $(".b-stats", bey);
+    // Even growth across the whole scene (no speed spikes), GPU-composited
     scene(bey, (p) => {
-      star.style.transform = `scale(${lerp(0.13, 1, Math.pow(p, 0.85))})`;
+      star.style.transform = `translate3d(0,0,0) scale(${lerp(0.13, 1, p)})`;
       const k = clamp(p * 1.6, 0, 1);
       top.style.transform = `translate3d(${-k * vw * 0.05}px,${-k * vh * 0.06}px,0)`;
       bot.style.transform = `translate3d(${k * vw * 0.05}px,${k * vh * 0.06}px,0)`;
@@ -146,7 +148,7 @@ function initScenes() {
       const s = clamp((p - 0.4) * 3, 0, 1);
       stats.style.opacity = s;
       stats.style.setProperty("--sy", (1 - s) * 30 + "px");
-    }, () => {});
+    }, () => {}, 0.075);
   }
 
   // Work: horizontal step cards, focused card scales up
@@ -213,14 +215,18 @@ function initScenes() {
   }
 
   let running = false;
-  function tick() {
+  let last = 0;
+  function tick(now) {
     const sy = scrollY;
     let busy = false;
+    // Time-based smoothing: same feel on 60Hz and 120Hz screens and when frames drop
+    const dt = last ? Math.min(34, now - last) : 16.67; // cap so a dropped frame never causes a jump
+    last = now;
     scenes.forEach((o) => {
       const visible = sy + vh > o.top - vh && sy < o.top + o.range + vh * 2;
       if (!visible && o.done) return;
       const t = clamp((sy - o.top) / o.range, 0, 1);
-      o.p += (t - o.p) * 0.14; // eased follow
+      o.p += (t - o.p) * (1 - Math.pow(1 - o.follow, dt / 16.67)); // eased follow
       if (Math.abs(t - o.p) < 0.0004) o.p = t;
       else busy = true;
       o.fn(o.p);
@@ -229,6 +235,7 @@ function initScenes() {
     updateNav();
     running = busy;
     if (busy) requestAnimationFrame(tick);
+    else last = 0;
   }
   const kick = () => {
     if (!running) { running = true; requestAnimationFrame(tick); }
