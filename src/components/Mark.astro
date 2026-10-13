@@ -9,7 +9,7 @@ const { class: className, outline = false } = Astro.props;
 ---
 
 <svg viewBox="6 6 52 52" aria-hidden="true" class:list={["mark-svg", className]}>
-  <circle cx="32" cy="32" r="18" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-dasharray="88 25" transform="rotate(-90 32 32)"></circle>
+  <circle class="ring" cx="32" cy="32" r="18" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-dasharray="88 25" transform="rotate(-90 32 32)"></circle>
   <circle class="node" cx="15.4" cy="25" r="7" fill="#C6F432" stroke={outline ? "#0B0B0C" : "none"} stroke-width="1.6"></circle>
-  <circle cx="32" cy="32" r="4" fill="currentColor"></circle>
+  <circle class="dot" cx="32" cy="32" r="4" fill="currentColor"></circle>
 </svg>

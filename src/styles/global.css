@@ -921,3 +921,9 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 [data-scheme="bo"][data-theme="light"] .btn.v { background: #2563EB; }
 [data-scheme="bo"][data-theme="light"] .card.c-lime { background: radial-gradient(38% 26% at 36% 70%, #BFDBFE 0, rgba(59, 130, 246, .6) 45%, transparent 78%), radial-gradient(70% 45% at 75% 22%, rgba(37, 99, 235, .35), transparent 72%), linear-gradient(170deg, #172554, #0B1B3F) !important; }
 [data-scheme="bo"][data-theme="light"] .wk .art.a3 { background: radial-gradient(40% 45% at 52% 58%, rgba(59, 130, 246, .45), rgba(37, 99, 235, .15) 55%, transparent 78%) !important; }
+
+/* Logo ring + centre dot colour (theme-controlled; defaults to the text colour) */
+.logo-svg .ring, .mark-svg .ring { stroke: var(--logo-ring, currentColor); }
+.logo-svg .dot, .mark-svg .dot { fill: var(--logo-ring, currentColor); }
+.chip { --logo-ring: currentColor; }
+[data-theme="light"][data-scheme="bo"] { --logo-ring: #2563EB; }
