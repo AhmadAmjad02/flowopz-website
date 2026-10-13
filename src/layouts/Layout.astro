@@ -67,7 +67,7 @@ const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": grap
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <meta name="robots" content="index,follow,max-image-preview:large" />
-    <meta name="theme-color" content="#1C1C20" />
+    <meta name="theme-color" content="#2563EB" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:url" content={canonical} />
@@ -88,7 +88,22 @@ const jsonLd = JSON.stringify({ "@context": "https://schema.org", "@graph": grap
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="preload" href={interTight} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={geistMono} as="font" type="font/woff2" crossorigin />
-    <script is:inline>document.documentElement.className = "js";</script>
+    <script is:inline define:vars={{ defaultTheme: site.theme, defaultScheme: site.scheme }}>
+      // Theme: ?theme=light|dark and light scheme: ?scheme=pure|blue|violet|orange|teal|rose|bo|ob
+      // (remembered for the visit), otherwise the site defaults
+      var d = document.documentElement, t = defaultTheme, s = defaultScheme;
+      try {
+        var p = new URLSearchParams(location.search);
+        var q = p.get("theme"), qs = p.get("scheme");
+        if (q === "light" || q === "dark") sessionStorage.setItem("theme", q);
+        if (/^(pure|blue|violet|orange|teal|rose|bo|ob)$/.test(qs || "")) sessionStorage.setItem("scheme", qs);
+        t = sessionStorage.getItem("theme") || t;
+        s = sessionStorage.getItem("scheme") || s;
+      } catch (e) {}
+      d.className = "js";
+      d.dataset.theme = t;
+      d.dataset.scheme = s;
+    </script>
     <script type="application/ld+json" set:html={jsonLd} />
   </head>
   <body>

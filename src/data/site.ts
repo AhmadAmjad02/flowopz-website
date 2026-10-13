@@ -3,6 +3,10 @@
 
 export const site = {
   name: "FlowOpz",
+  // Colour theme: "dark" or "light". Preview the other with ?theme=light / ?theme=dark
+  theme: "light",
+  // Light colour scheme: "bo" (Bold Ocean Blue, live) | "ob" (Bold Sunset Orange) | "pure" | "blue" | "violet" | "orange" | "teal" | "rose"
+  scheme: "bo",
   // Live domain: used for canonical URLs, sitemap and social previews
   url: "https://flowopz.com",
   title: "GoHighLevel Expert & GHL Automation Agency | FlowOpz",
